@@ -25,7 +25,7 @@
 /* ══ 헤더 ══ */
 #jc .hd{
   background:linear-gradient(135deg,#5a1816 0%,#772220 40%,#c86040 75%,#e8a87a 100%);
-  padding:100px 60px 88px;
+  padding:180px 60px 120px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;gap:22px;position:relative;overflow:hidden;}
 #jc .hd::before{content:'';position:absolute;top:-120px;right:-120px;
@@ -231,7 +231,7 @@
 @media(max-width:767px){
   #jc .d{display:none!important;}
   #jc .m{display:block!important;}
-  #jc .hd{padding:64px 20px 56px;}
+  #jc .hd{padding:150px 20px 56px;}
   #jc .hd-title{font-size:38px;}
   #jc .hd-sub{font-size:18px;}
   #jc .hd-n{font-size:32px;}
@@ -270,7 +270,7 @@
 
 <!-- 헤더 -->
 <div class="hd">
-  <div class="hd-title">무제한 영어 강의<br>콘텐츠 로드맵</div>
+  <div class="hd-title">꿈을 현실로 만드는,<br>정철대학 강의계획표</div>
   <div class="hd-sub">전공 과정 &amp; 평생 과정 공개 예정일</div>
   <div class="hd-stats">
     <div class="hd-stat st-u"><div class="hd-n">1316</div><div class="hd-t">전공 강의</div></div>
