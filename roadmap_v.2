@@ -1,0 +1,672 @@
+<!-- 정철대학 로드맵 v8 | 워드프레스 완전호환 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+
+<style id="jcrm-style">
+/* 엘리멘토 여백 제거 */
+.elementor-widget-html .elementor-widget-container,
+.elementor-widget-html .elementor-column-wrap,
+.elementor-widget-html .elementor-column,
+.elementor-widget-html .elementor-row,
+.elementor-widget-html .e-con-inner {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100% !important;
+}
+
+#jcrm-outer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+#jcrm {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: #0D0D0D;
+  color: #ffffff;
+  box-sizing: border-box;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+#jcrm * { box-sizing: inherit; }
+
+/* ── 애니메이션 ── */
+@keyframes jcrm-fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes jcrm-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes jcrm-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+@keyframes jcrm-slideLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── 헤더 ── */
+#jcrm .hd {
+  background: #0D0D0D;
+  padding: 100px 60px 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #222;
+  animation: jcrm-fadeIn .8s ease both;
+}
+#jcrm .hd::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(245,166,35,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 50%, rgba(56,189,248,.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+#jcrm .hd-eyebrow {
+  font-size: 13px; letter-spacing: 6px; font-weight: 700;
+  color: #F5A623; text-transform: uppercase;
+  animation: jcrm-fadeUp .6s ease .1s both;
+}
+#jcrm .hd-title {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 72px; font-weight: 900; line-height: 1.2; margin: 0;
+  background: linear-gradient(135deg, #fff 30%, #F5A623 70%, #FFB84D 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -2px;
+  animation: jcrm-fadeUp .7s ease .2s both;
+}
+#jcrm .hd-sub {
+  font-size: 20px; color: #888; font-weight: 600; margin: 0;
+  animation: jcrm-fadeUp .6s ease .3s both;
+}
+#jcrm .hd-stats {
+  display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+  animation: jcrm-fadeUp .6s ease .4s both;
+}
+#jcrm .hd-stat {
+  padding: 22px 40px; border-radius: 18px; text-align: center;
+}
+#jcrm .st-u { background: rgba(245,166,35,.10); border: 1.5px solid rgba(245,166,35,.3); }
+#jcrm .st-l { background: rgba(56,189,248,.10); border: 1.5px solid rgba(56,189,248,.3); }
+#jcrm .hd-n {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 52px; font-weight: 900; line-height: 1; letter-spacing: -2px;
+}
+#jcrm .st-u .hd-n { color: #F5A623; }
+#jcrm .st-l .hd-n { color: #38BDF8; }
+#jcrm .hd-t { font-size: 16px; color: #888; font-weight: 700; margin-top: 6px; }
+
+/* ── 범례 ── */
+#jcrm .legend {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  padding: 20px 40px; background: #0D0D0D; border-bottom: 1px solid #1e1e1e;
+  animation: jcrm-fadeUp .5s ease .5s both;
+}
+#jcrm .leg {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: 30px;
+  font-size: 16px; font-weight: 800;
+}
+#jcrm .leg-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── 월 탭 네비게이션 ── */
+#jcrm .month-nav {
+  position: sticky; top: 0; z-index: 999;
+  background: rgba(13,13,13,.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #222;
+  animation: jcrm-fadeIn .5s ease .6s both;
+}
+#jcrm .nav-inner {
+  display: flex; align-items: stretch; overflow-x: auto;
+  scrollbar-width: none; padding: 0 20px; gap: 0;
+}
+#jcrm .nav-inner::-webkit-scrollbar { display: none; }
+#jcrm .nav-year-lbl {
+  display: flex; align-items: center;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 11px; font-weight: 900; letter-spacing: 3px;
+  padding: 0 14px 0 6px; flex-shrink: 0; border-right: 1px solid #2a2a2a;
+  margin-right: 4px;
+}
+#jcrm .nav-year-lbl.y26 { color: #F5A623; }
+#jcrm .nav-year-lbl.y27 { color: #38BDF8; }
+#jcrm .nav-divider { width: 1px; background: #2a2a2a; margin: 10px 6px; flex-shrink: 0; }
+#jcrm .nav-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 12px 14px; background: none; border: none; cursor: pointer;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  color: #555; white-space: nowrap; flex-shrink: 0;
+  position: relative; transition: color .18s; gap: 3px;
+}
+#jcrm .nav-btn::after {
+  content: ''; position: absolute; bottom: 0; left: 50%; right: 50%;
+  height: 3px; border-radius: 3px 3px 0 0;
+  background: #F5A623; transition: left .18s, right .18s;
+}
+#jcrm .nav-btn:hover { color: #fff; }
+#jcrm .nav-btn:hover::after { left: 8%; right: 8%; }
+#jcrm .nav-btn.on26 { color: #F5A623; }
+#jcrm .nav-btn.on26::after { left: 8%; right: 8%; background: #F5A623; }
+#jcrm .nav-btn.on27 { color: #38BDF8; }
+#jcrm .nav-btn.on27::after { left: 8%; right: 8%; background: #38BDF8; }
+#jcrm .nav-num { font-size: 22px; font-weight: 900; line-height: 1; }
+#jcrm .nav-ko  { font-size: 11px; font-weight: 700; opacity: .65; }
+
+/* ── 연도 배너 ── */
+#jcrm .year-banner {
+  padding: 32px 40px 20px;
+  display: flex; align-items: center; gap: 20px;
+}
+#jcrm .year-num {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 80px; font-weight: 900; line-height: 1; letter-spacing: -4px;
+}
+#jcrm .year-num.y26 {
+  background: linear-gradient(135deg, #F5A623, #FFB84D);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+#jcrm .year-num.y27 {
+  background: linear-gradient(135deg, #38BDF8, #7DD3FC);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+#jcrm .year-line { flex: 1; height: 2px; }
+#jcrm .year-line.y26 { background: linear-gradient(90deg, #F5A623, transparent); }
+#jcrm .year-line.y27 { background: linear-gradient(90deg, #38BDF8, transparent); }
+
+/* ── 월 섹션 ── */
+#jcrm .month-section { padding: 0 40px 44px; }
+#jcrm .month-head {
+  display: flex; align-items: baseline; gap: 10px;
+  margin-bottom: 24px; padding-left: 10px;
+  border-left: 5px solid;
+}
+#jcrm .month-head.y26 { border-color: #F5A623; }
+#jcrm .month-head.y27 { border-color: #38BDF8; }
+#jcrm .month-num-big {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 60px; font-weight: 900; color: #fff;
+  line-height: 1; letter-spacing: -2px;
+}
+#jcrm .month-ko {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 26px; font-weight: 700; color: #666;
+}
+
+/* ── 카드 그리드 ── */
+#jcrm .card-grid { display: grid; gap: 14px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px)  { #jcrm .card-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { #jcrm .card-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ── 과정 라벨 ── */
+#jcrm .course-lbl {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 18px; font-weight: 900; letter-spacing: 2px;
+  margin-bottom: 12px; padding: 0 4px;
+}
+#jcrm .course-lbl.u { color: #F5A623; }
+#jcrm .course-lbl.l { color: #38BDF8; }
+#jcrm .course-lbl-dot { width: 8px; height: 8px; border-radius: 50%; }
+#jcrm .course-lbl.u .course-lbl-dot { background: #F5A623; }
+#jcrm .course-lbl.l .course-lbl-dot { background: #38BDF8; }
+
+/* ── 카드 ── */
+#jcrm .card {
+  border-radius: 20px; padding: 26px 24px 24px;
+  display: flex; flex-direction: column; gap: 14px;
+  min-height: 200px; position: relative; overflow: hidden;
+  transition: transform .2s, box-shadow .2s; cursor: default;
+}
+#jcrm .card.lnk { cursor: pointer; }
+#jcrm .card:hover { transform: translateY(-5px); }
+#jcrm .card::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 120px; height: 120px; border-radius: 50%; pointer-events: none;
+}
+/* 전공 완료 — AMBER */
+#jcrm .cu-on {
+  background: linear-gradient(140deg, #1c1200, #2e1f00, #3d2900);
+  box-shadow: 0 0 0 1.5px #F5A623, 0 8px 32px rgba(245,166,35,.22);
+}
+#jcrm .cu-on::before { background: radial-gradient(circle, rgba(245,166,35,.16) 0%, transparent 70%); }
+/* 전공 예정 */
+#jcrm .cu-off {
+  background: #181818;
+  box-shadow: 0 0 0 1px #2e2e2e, 0 4px 16px rgba(0,0,0,.4);
+}
+/* 평생 완료 — SKY BLUE */
+#jcrm .cl-on {
+  background: linear-gradient(140deg, #001424, #001f3d, #002952);
+  box-shadow: 0 0 0 1.5px #38BDF8, 0 8px 32px rgba(56,189,248,.20);
+}
+#jcrm .cl-on::before { background: radial-gradient(circle, rgba(56,189,248,.16) 0%, transparent 70%); }
+/* 평생 예정 */
+#jcrm .cl-off {
+  background: #181818;
+  box-shadow: 0 0 0 1px #2e2e2e, 0 4px 16px rgba(0,0,0,.4);
+}
+/* 시리즈 완결 — ORANGE */
+#jcrm .c-fin {
+  background: linear-gradient(140deg, #1c0800, #2e1200, #3d1900);
+  box-shadow: 0 0 0 2px #FF6B00, 0 8px 40px rgba(255,107,0,.35);
+}
+#jcrm .c-fin::before { background: radial-gradient(circle, rgba(255,107,0,.22) 0%, transparent 70%); }
+/* 공개예정 워터마크 */
+#jcrm .cu-off::after, #jcrm .cl-off::after {
+  content: 'COMING SOON';
+  position: absolute; top: 14px; right: 14px;
+  font-size: 9px; font-weight: 900; letter-spacing: 2px;
+  color: #444; pointer-events: none;
+}
+
+/* 날짜 배지 */
+#jcrm .c-date {
+  display: inline-flex; align-items: center;
+  padding: 7px 16px; border-radius: 30px;
+  font-size: 18px; font-weight: 800;
+  align-self: flex-start; position: relative; z-index: 1;
+}
+#jcrm .cu-on  .c-date { background: rgba(245,166,35,.18); color: #F5A623; }
+#jcrm .cu-off .c-date { background: #2a2a2a; color: #666; animation: jcrm-blink 2.2s ease-in-out infinite; }
+#jcrm .cl-on  .c-date { background: rgba(56,189,248,.18); color: #38BDF8; }
+#jcrm .cl-off .c-date { background: #2a2a2a; color: #666; animation: jcrm-blink 2.2s ease-in-out infinite; }
+#jcrm .c-fin  .c-date { background: rgba(255,107,0,.18); color: #FF6B00; }
+
+/* 제목 */
+#jcrm .c-title {
+  font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+  font-size: 26px; font-weight: 800; line-height: 1.3;
+  position: relative; z-index: 1;
+}
+#jcrm .cu-on  .c-title { color: #FFB84D; }
+#jcrm .cu-off .c-title { color: #bbb; }
+#jcrm .cl-on  .c-title { color: #7DD3FC; }
+#jcrm .cl-off .c-title { color: #bbb; }
+#jcrm .c-fin  .c-title { color: #FF8C33; }
+
+/* 서브 */
+#jcrm .c-sub {
+  font-size: 17px; font-weight: 600; line-height: 1.65;
+  flex: 1; position: relative; z-index: 1;
+}
+#jcrm .cu-on  .c-sub { color: rgba(245,166,35,.72); }
+#jcrm .cu-off .c-sub { color: #555; }
+#jcrm .cl-on  .c-sub { color: rgba(56,189,248,.72); }
+#jcrm .cl-off .c-sub { color: #555; }
+#jcrm .c-fin  .c-sub { color: rgba(255,107,0,.72); }
+
+/* 상태 배지 */
+#jcrm .c-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 18px; border-radius: 20px;
+  font-size: 16px; font-weight: 900;
+  align-self: flex-start; position: relative; z-index: 1;
+}
+#jcrm .cu-on  .c-status { background: #F5A623; color: #000; }
+#jcrm .cu-off .c-status { background: #1e1e1e; color: #555; border: 1px solid #333; }
+#jcrm .cl-on  .c-status { background: #38BDF8; color: #000; }
+#jcrm .cl-off .c-status { background: #1e1e1e; color: #555; border: 1px solid #333; }
+#jcrm .c-fin  .c-status { background: #FF6B00; color: #fff; }
+
+#jcrm .c-arr { font-size: 13px; opacity: .55; position: relative; z-index: 1; }
+
+/* 구분선 */
+#jcrm .divider { height: 1px; background: linear-gradient(90deg, transparent, #2a2a2a, transparent); margin: 0 40px 36px; }
+
+/* 카드 등장 */
+#jcrm .fu { opacity: 0; animation: jcrm-fadeUp .5s ease forwards; }
+#jcrm .fl { opacity: 0; animation: jcrm-slideLeft .45s ease forwards; }
+
+/* 푸터 */
+#jcrm .foot {
+  text-align: center; padding: 28px 20px;
+  font-size: 14px; color: #444; font-weight: 600;
+  background: #0D0D0D; border-top: 1px solid #1e1e1e;
+}
+
+/* 모바일 */
+@media (max-width: 767px) {
+  #jcrm .hd { padding: 64px 20px 52px; }
+  #jcrm .hd-title { font-size: 42px; letter-spacing: -1px; }
+  #jcrm .hd-sub { font-size: 17px; }
+  #jcrm .hd-n { font-size: 44px; }
+  #jcrm .hd-stat { padding: 18px 28px; }
+  #jcrm .year-banner { padding: 24px 20px 16px; }
+  #jcrm .year-num { font-size: 58px; }
+  #jcrm .month-section { padding: 0 16px 36px; }
+  #jcrm .month-num-big { font-size: 48px; }
+  #jcrm .month-ko { font-size: 20px; }
+  #jcrm .card-grid { grid-template-columns: 1fr; }
+  #jcrm .c-title { font-size: 23px; }
+  #jcrm .c-sub { font-size: 15px; }
+  #jcrm .c-date { font-size: 16px; }
+  #jcrm .legend { padding: 14px 12px; gap: 8px; }
+  #jcrm .leg { font-size: 14px; padding: 8px 14px; }
+  #jcrm .divider { margin: 0 16px 28px; }
+  #jcrm .course-lbl { font-size: 16px; }
+}
+</style>
+
+<div id="jcrm-outer">
+<div id="jcrm">
+
+  <!-- 헤더 -->
+  <div class="hd">
+    <div class="hd-eyebrow">Jeongchul University</div>
+    <div class="hd-title">무제한 영어 강의<br>콘텐츠 로드맵</div>
+    <div class="hd-sub">전공 과정 &amp; 평생 과정 공개 예정일</div>
+    <div class="hd-stats">
+      <div class="hd-stat st-u">
+        <div class="hd-n" id="cnt-u">0</div>
+        <div class="hd-t">전공 강의 수</div>
+      </div>
+      <div class="hd-stat st-l">
+        <div class="hd-n" id="cnt-l">0</div>
+        <div class="hd-t">평생 강의 수</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 범례 -->
+  <div class="legend">
+    <div class="leg" style="background:rgba(245,166,35,.10);border:1px solid rgba(245,166,35,.28);">
+      <div class="leg-dot" style="background:#F5A623;"></div>
+      <span style="color:#F5A623;">전공 — 공개 완료</span>
+    </div>
+    <div class="leg" style="background:rgba(56,189,248,.10);border:1px solid rgba(56,189,248,.28);">
+      <div class="leg-dot" style="background:#38BDF8;"></div>
+      <span style="color:#38BDF8;">평생 — 공개 완료</span>
+    </div>
+    <div class="leg" style="background:rgba(255,107,0,.10);border:1px solid rgba(255,107,0,.35);">
+      <div class="leg-dot" style="background:#FF6B00;box-shadow:0 0 6px rgba(255,107,0,.6);"></div>
+      <span style="color:#FF6B00;">🎉 시리즈 완결</span>
+    </div>
+    <div class="leg" style="background:#161616;border:1px solid #2e2e2e;">
+      <div class="leg-dot" style="background:#3a3a3a;animation:jcrm-blink 2s ease-in-out infinite;"></div>
+      <span style="color:#555;">공개 예정</span>
+    </div>
+  </div>
+
+  <!-- 월 탭 네비 -->
+  <div class="month-nav" id="jcrm-nav"></div>
+
+  <!-- 콘텐츠 -->
+  <div id="jcrm-content"></div>
+
+  <div class="foot">© 2026 정철대학 · Jeongchul University · All Rights Reserved</div>
+</div>
+</div>
+
+<script>
+(function() {
+  var U = [
+    {t:"영어엔진 1~3단계",   s:"영어 문장을 스스로 만드는 핵심 메커니즘",    m:"2026-04", d:"4월 21일", on:1, fin:0, url:"https://jc.co.kr/product/정철쌤의-영어엔진-1단계/"},
+    {t:"죽은영어살리기",      s:"머릿속 지식을 입 밖으로 꺼내는 긴급 처방",   m:"2026-05", d:"5월 중순",  on:0, fin:0},
+    {t:"왕초보 파닉스",       s:"읽기 자신감을 세우는 소리와 글자의 규칙",    m:"2026-05", d:"5월 하순",  on:0, fin:0},
+    {t:"왕초보 숫자 영어",    s:"숫자·시간·날짜를 원어민처럼 읽는 법",       m:"2026-05", d:"5월",       on:0, fin:0},
+    {t:"영어엔진 4단계",      s:"동사 하나로 문장 전체를 완성하는 훈련",      m:"2026-06", d:"6월",       on:0, fin:0},
+    {t:"왕초보 패턴회화",     s:"가장 많이 쓰는 패턴으로 즉각 반응하기",     m:"2026-06", d:"6월",       on:0, fin:0},
+    {t:"영어엔진 5단계",      s:"패턴으로 말하기 능력을 완성하는 단계",       m:"2026-07", d:"7월",       on:0, fin:0},
+    {t:"직독직해",            s:"끊어 읽기로 문장 구조를 꿰뚫는 훈련",       m:"2026-07", d:"7월",       on:0, fin:0},
+    {t:"영어엔진 6단계",      s:"6단계 완성으로 영어 엔진 풀가동",            m:"2026-08", d:"8월",       on:0, fin:0},
+    {t:"속독속해",            s:"빠르게 읽고 빠르게 이해하는 독해 훈련",      m:"2026-08", d:"8월",       on:0, fin:0},
+    {t:"리바이벌 잉글리쉬 1", s:"잊혔던 영어 감각을 깨우는 체계적 복원",     m:"2026-09", d:"9월 말",    on:0, fin:0},
+    {t:"리바이벌 잉글리쉬 2", s:"잊혔던 영어 감각을 깨우는 체계적 복원",     m:"2026-10", d:"10월",      on:0, fin:0},
+    {t:"리바이벌 잉글리쉬 3", s:"잊혔던 영어 감각을 깨우는 체계적 복원",     m:"2026-11", d:"11월",      on:0, fin:0},
+    {t:"리바이벌 잉글리쉬 4", s:"잊혔던 영어 감각을 깨우는 체계적 복원",     m:"2026-12", d:"12월",      on:0, fin:0},
+    {t:"리바이벌 잉글리쉬 5", s:"잊혔던 영어 감각을 깨우는 체계적 복원",     m:"2027-01", d:"1월",       on:0, fin:0},
+    {t:"리바이벌 잉글리쉬 6", s:"잊혔던 영어 감각을 깨우는 체계적 복원",     m:"2027-02", d:"2월",       on:0, fin:0},
+    {t:"뉴욕 잉글리쉬",       s:"뉴욕 현지의 생생한 언어를 담은 트렌디 영어", m:"2027-03", d:"3월",       on:0, fin:0},
+    {t:"스토리북 1",          s:"재미있는 이야기로 익히는 자연스러운 문장",   m:"2027-03", d:"3월",       on:0, fin:0},
+    {t:"리얼비즈니스토크 1,2", s:"비즈니스 현장에서 통하는 프로의 언어",      m:"2027-04", d:"4월",       on:0, fin:0},
+    {t:"Hit verb 동치미",     s:"핵심 동사 하나로 수십 가지 표현 정복",       m:"2027-10", d:"10월",      on:0, fin:0}
+  ];
+  var L = [
+    {t:"영어로 그림전도",     s:"시각적 도구로 복음을 전하는 직관적 전도 영어",    m:"2026-04", d:"4월 21일", on:1, fin:0, url:"https://jc.co.kr/product/영어로-그림전도/"},
+    {t:"로마서 8장",          s:"성령과 구원의 확신을 깊이 있게 새기는 말씀 묵상",  m:"2026-04", d:"4월 21일", on:1, fin:0, url:"https://jc.co.kr/product/정철의-로마서-통독암송/"},
+    {t:"산상수훈 1권",        s:"예수님의 고귀한 가르침을 원문으로 묵상",           m:"2026-05", d:"5월 중순",  on:0, fin:0},
+    {t:"야고보서 1권",        s:"행함이 있는 믿음을 영어 말씀으로 체득",            m:"2026-05", d:"5월 하순",  on:0, fin:0},
+    {t:"야고보서 2권",        s:"행함이 있는 믿음을 영어 말씀으로 체득",            m:"2026-06", d:"6월",       on:0, fin:0},
+    {t:"요한복음 1권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2026-07", d:"7월",       on:0, fin:0},
+    {t:"산상수훈 2권",        s:"산상수훈 완결",                                    m:"2026-07", d:"7월",       on:0, fin:1},
+    {t:"요한복음 2권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2026-08", d:"8월",       on:0, fin:0},
+    {t:"야고보서 3권",        s:"야고보서 완결",                                    m:"2026-08", d:"8월",       on:0, fin:1},
+    {t:"요한복음 3권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2026-09", d:"9월",       on:0, fin:0},
+    {t:"요한복음 4권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2026-10", d:"10월",      on:0, fin:0},
+    {t:"요한복음 5권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2026-11", d:"11월",      on:0, fin:0},
+    {t:"요한복음 6권",        s:"A세트 완결",                                       m:"2026-12", d:"12월",      on:0, fin:1},
+    {t:"요나서",              s:"순종의 여정으로 배우는 생생한 묘사 영어",           m:"2027-01", d:"1월",       on:0, fin:0},
+    {t:"요셉이야기 1~2권",    s:"꿈과 비전을 담은 요셉의 일대기 영어 정복",         m:"2027-03", d:"3월",       on:0, fin:0},
+    {t:"요셉이야기 3~4권",    s:"꿈과 비전을 담은 요셉의 일대기 영어 정복",         m:"2027-04", d:"4월",       on:0, fin:0},
+    {t:"요셉이야기 5권",      s:"요셉이야기 완결",                                  m:"2027-06", d:"6월",       on:0, fin:1},
+    {t:"요한일서 1권",        s:"사랑과 진리의 메시지를 담은 깊이 있는 묵상",       m:"2027-06", d:"6월",       on:0, fin:0},
+    {t:"요한복음 7권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2027-07", d:"7월",       on:0, fin:0},
+    {t:"요한일서 2권",        s:"사랑과 진리의 메시지를 담은 깊이 있는 묵상",       m:"2027-07", d:"7월",       on:0, fin:0},
+    {t:"요한복음 8권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2027-08", d:"8월",       on:0, fin:0},
+    {t:"요한일서 3권",        s:"요한일서 완결",                                    m:"2027-08", d:"8월",       on:0, fin:1},
+    {t:"요한복음 9권",        s:"정철대학이 제안하는 성경 영어의 정석",             m:"2027-09", d:"9월",       on:0, fin:0},
+    {t:"요한복음 10권",       s:"정철대학이 제안하는 성경 영어의 정석",             m:"2027-10", d:"10월",      on:0, fin:0},
+    {t:"요한복음 11권",       s:"정철대학이 제안하는 성경 영어의 정석",             m:"2027-11", d:"11월",      on:0, fin:0},
+    {t:"요한복음 12권",       s:"요영통 완결",                                      m:"2027-12", d:"12월",      on:0, fin:1}
+  ];
+
+  var MONTHS = [
+    "2026-04","2026-05","2026-06","2026-07","2026-08","2026-09",
+    "2026-10","2026-11","2026-12",
+    "2027-01","2027-02","2027-03","2027-04","2027-05","2027-06",
+    "2027-07","2027-08","2027-09","2027-10","2027-11","2027-12"
+  ];
+
+  function gn(m) { return m.split("-")[1].replace(/^0/, ""); }
+  function gy(m) { return m.split("-")[0]; }
+  function is27(m) { return gy(m) === "2027"; }
+  function bm(arr, m) { return arr.filter(function(c){ return c.m === m; }); }
+
+  /* ── 숫자 카운팅 애니메이션 ── */
+  function countUp(el, target, dur) {
+    var start = 0, step = target / (dur / 16);
+    var timer = setInterval(function() {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = Math.floor(start).toLocaleString();
+    }, 16);
+  }
+
+  /* ── 카드 HTML ── */
+  var delay = 0.3;
+  function nd() { var d = delay; delay += 0.05; return d; }
+
+  function cardHTML(c, tp) {
+    var fin = c.fin;
+    var on  = c.on;
+    var cls = "card fu ";
+    if (fin)       cls += "c-fin";
+    else if (tp==="u") cls += (on ? "cu-on" : "cu-off");
+    else               cls += (on ? "cl-on" : "cl-off");
+    if (c.url) cls += " lnk";
+
+    var onclick = c.url ? " onclick=\"window.open('" + c.url + "','_blank')\"" : "";
+    var arr     = c.url ? "<span class='c-arr'>↗</span> " : "";
+    var badge   = fin ? "🎉 시리즈 완결" : (on ? "✅ 공개 완료" : "📅 공개 예정");
+    var d = nd();
+
+    return "<div class='" + cls + "'" + onclick + " style='animation-delay:" + d.toFixed(2) + "s;animation-play-state:paused;'>"
+      + "<div class='c-date'>" + c.d + "</div>"
+      + "<div class='c-title'>" + arr + c.t + "</div>"
+      + "<div class='c-sub'>" + c.s + (fin ? " 🎉" : "") + "</div>"
+      + "<div class='c-status'>" + badge + "</div>"
+      + "</div>";
+  }
+
+  /* ── 메인 렌더 ── */
+  function render() {
+    var out = document.getElementById("jcrm-content");
+    if (!out) return;
+    var html = "";
+    var prevYr = "";
+
+    MONTHS.forEach(function(m) {
+      var uc = bm(U, m), lc = bm(L, m);
+      if (!uc.length && !lc.length) return;
+      var yr = gy(m); var y = is27(m);
+
+      if (yr !== prevYr) {
+        prevYr = yr;
+        html += "<div class='year-banner fl' style='animation-delay:" + nd().toFixed(2) + "s;animation-play-state:paused;'>"
+          + "<div class='year-num " + (y ? "y27" : "y26") + "'>" + yr + "</div>"
+          + "<div class='year-line " + (y ? "y27" : "y26") + "'></div>"
+          + "</div>";
+      }
+
+      html += "<div class='month-section' id='ms-" + m + "' data-ms='" + m + "'>";
+      html += "<div class='month-head " + (y ? "y27" : "y26") + " fl' style='animation-delay:" + nd().toFixed(2) + "s;animation-play-state:paused;'>"
+        + "<span class='month-num-big'>" + gn(m) + "</span>"
+        + "<span class='month-ko'>월</span>"
+        + "</div>";
+
+      if (uc.length) {
+        html += "<div class='course-lbl u'><div class='course-lbl-dot'></div>전공 과정</div>";
+        html += "<div class='card-grid' style='margin-bottom:14px;'>";
+        uc.forEach(function(c){ html += cardHTML(c, "u"); });
+        html += "</div>";
+      }
+      if (lc.length) {
+        html += "<div class='course-lbl l'><div class='course-lbl-dot'></div>평생 과정</div>";
+        html += "<div class='card-grid'>";
+        lc.forEach(function(c){ html += cardHTML(c, "l"); });
+        html += "</div>";
+      }
+      html += "</div><div class='divider'></div>";
+    });
+
+    out.innerHTML = html;
+
+    /* IntersectionObserver 등장 */
+    if ("IntersectionObserver" in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.style.animationPlayState = "running";
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.06 });
+      document.querySelectorAll("#jcrm .fu, #jcrm .fl").forEach(function(el) {
+        obs.observe(el);
+      });
+    }
+  }
+
+  /* ── 탭 네비 렌더 ── */
+  function buildNav() {
+    var nav = document.getElementById("jcrm-nav");
+    if (!nav) return;
+    var active = MONTHS.filter(function(m){ return bm(U,m).length || bm(L,m).length; });
+    var html = "<div class='nav-inner' id='nav-inner'>";
+    var prevYr = "";
+    active.forEach(function(m) {
+      var yr = gy(m); var y = is27(m);
+      if (yr !== prevYr) {
+        if (prevYr) html += "<div class='nav-divider'></div>";
+        html += "<div class='nav-year-lbl " + (y ? "y27" : "y26") + "'>" + yr + "</div>";
+        prevYr = yr;
+      }
+      html += "<button class='nav-btn' data-m='" + m + "' onclick='jcrmGo(\"" + m + "\")'>"
+        + "<span class='nav-num'>" + gn(m) + "</span>"
+        + "<span class='nav-ko'>월</span>"
+        + "</button>";
+    });
+    html += "</div>";
+    nav.innerHTML = html;
+    if (active.length) setActive(active[0]);
+  }
+
+  function setActive(m) {
+    var btns = document.querySelectorAll("#jcrm-nav .nav-btn");
+    btns.forEach(function(b) {
+      b.classList.remove("on26", "on27");
+      if (b.getAttribute("data-m") === m) {
+        b.classList.add(is27(m) ? "on27" : "on26");
+        var inner = document.getElementById("nav-inner");
+        if (inner) {
+          inner.scrollTo({ left: b.offsetLeft - inner.offsetWidth / 2 + b.offsetWidth / 2, behavior: "smooth" });
+        }
+      }
+    });
+  }
+
+  window.jcrmGo = function(m) {
+    var el = document.getElementById("ms-" + m);
+    if (!el) return;
+    var nav = document.getElementById("jcrm-nav");
+    var off = (nav ? nav.offsetHeight : 60) + 10;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - off, behavior: "smooth" });
+    setActive(m);
+  };
+
+  /* 스크롤 → active 탭 갱신 */
+  (function() {
+    var tick = false;
+    window.addEventListener("scroll", function() {
+      if (tick) return; tick = true;
+      requestAnimationFrame(function() {
+        var nav = document.getElementById("jcrm-nav");
+        var navH = nav ? nav.offsetHeight : 60;
+        var cur = null;
+        document.querySelectorAll("[data-ms]").forEach(function(s) {
+          if (s.getBoundingClientRect().top <= navH + 80) cur = s.getAttribute("data-ms");
+        });
+        if (cur) setActive(cur);
+        tick = false;
+      });
+    });
+  })();
+
+  /* ── 카운팅 숫자 ── */
+  function startCount() {
+    var eu = document.getElementById("cnt-u");
+    var el = document.getElementById("cnt-l");
+    if (eu) countUp(eu, 1316, 1800);
+    if (el) countUp(el, 2564, 1800);
+  }
+
+  /* ── 헤더 카운터: 화면에 보이면 시작 ── */
+  function initCounter() {
+    var stat = document.querySelector("#jcrm .hd-stats");
+    if (!stat) { startCount(); return; }
+    if ("IntersectionObserver" in window) {
+      var o = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) { startCount(); o.disconnect(); }
+      }, { threshold: 0.3 });
+      o.observe(stat);
+    } else {
+      startCount();
+    }
+  }
+
+  /* ── 초기화 ── */
+  function init() { render(); buildNav(); initCounter(); }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
