@@ -1,0 +1,99 @@
+/*
+Theme Name: Astra-child
+Theme URI: https://wpastra.com/about/
+Description: Astra theme child
+Author: Brainstorm Force
+Author URI: https://wpastra.com/about/
+Template: astra
+Version: 1.0
+*/
+
+/*--------------------------------------------------------------------------------
+
+ * Font - Font Noto Sans 400, 700, 800
+
+--------------------------------------------------------------------------------*/
+html, body, div, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, 
+code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, 
+label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, 
+footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{
+	font-family: 'Noto Sans KR', '맑은고딕', 'MalgunGothic', "Apple SD Gothic Neo", applegothic, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+/*--------------------------------------------------------------------------------
+
+ * Font
+ * Heading
+
+--------------------------------------------------------------------------------*/
+#header h1{
+	color: #fff;
+}
+
+.entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4, .entry-content h5, .entry-content h6 {
+    margin-bottom: 0px;
+    font-family: 'Noto Sans KR', '맑은고딕', 'MalgunGothic', "Apple SD Gothic Neo", applegothic, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+/*--------------------------------------------------------------------------------
+
+ * Astro theme
+
+--------------------------------------------------------------------------------*/
+.ast-single-post .entry-content a, .ast-comment-content a:not(.ast-comment-edit-reply-wrap a) {
+    text-decoration: none;
+}
+
+
+/*--------------------------------------------------------------------------------
+
+ * Woocommerce
+
+--------------------------------------------------------------------------------*/
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title, 
+.woocommerce-page ul.products li.product .woocommerce-loop-product__title {
+    margin-bottom: 1em;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+
+/*--------------------------------------------------------------------------------
+
+ * Woocommerce
+ * Single page
+
+--------------------------------------------------------------------------------*/
+.ast-woocommerce-container {
+    padding-top: 40px;
+}
+
+.woocommerce .star-rating {
+    font-family: star !important;
+}
+
+.woocommerce .woocommerce-product-details__short-description {
+    padding: 15px 0px 60px;
+    margin-top: 30px;
+    border-top: 1px solid #ededed;    
+}
+
+.woocommerce div.product form.cart .button.single_add_to_cart_button {
+    padding: 20px 40px;
+}
+
+.woocommerce .quantity .qty {
+    width: 3.631em;
+    text-align: center;
+    min-height: 55px;
+}
+
+.woocommerce #reviews h2 {
+    font-weight: 400;
+    margin-bottom: 30px;
+}
