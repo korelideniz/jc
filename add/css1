@@ -3326,3 +3326,8 @@ btn {
 .cosmosfarm-members-subscription .email-check-btn {
     display: none !important;
 }
+/* 내 강의실 - 특정 강의 숨김 (영어엔진 1단계 PMP, 맛보기 강의) */
+li.simple-lms-49599,
+li.simple-lms-49532 {
+    display: none !important;
+}
