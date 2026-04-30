@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.jc-roadmap-wrap * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.jc-roadmap-wrap {
+  font-family: 'Pretendard Variable', 'Noto Sans KR', sans-serif;
+  background: #f0f4ff;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* ── 상단 배너 ── */
+.jc-roadmap-banner {
+  background: #3b5bdb;
+  padding: 200px 40px 140px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.jc-roadmap-banner::before {
+  content: '';
+  position: absolute;
+  top: -100px; left: -100px;
+  width: 400px; height: 400px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.jc-roadmap-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 320px; height: 320px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.jc-roadmap-banner h2 {
+  font-size: clamp(42px, 7vw, 88px);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -2px;
+  line-height: 1.15;
+  position: relative;
+  z-index: 1;
+}
+
+.jc-roadmap-banner h2 span {
+  color: #a5c0ff;
+}
+
+.jc-roadmap-banner p {
+  font-size: clamp(18px, 2.5vw, 28px);
+  color: rgba(255,255,255,0.75);
+  margin-top: 18px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.5px;
+}
+
+/* ── 본문 ── */
+.jc-roadmap-body {
+  padding: 50px 24px 70px;
+}
+
+/* ── 연도 ── */
+.jc-roadmap-year {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 50px 0 24px;
+}
+
+.jc-roadmap-year:first-child { margin-top: 0; }
+
+.jc-roadmap-year-label {
+  font-size: clamp(24px, 3.5vw, 44px);
+  font-weight: 900;
+  color: #3b5bdb;
+  white-space: nowrap;
+  letter-spacing: -1px;
+  background: #dbe4ff;
+  padding: 6px 22px;
+  border-radius: 50px;
+}
+
+.jc-roadmap-year-line {
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(to right, #3b5bdb, transparent);
+  border-radius: 3px;
+}
+
+/* ── 그리드 ── */
+.jc-roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .jc-roadmap-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+}
+
+@media (max-width: 600px) {
+  .jc-roadmap-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .jc-roadmap-banner { padding: 80px 24px 70px; }
+}
+
+/* ── 카드 ── */
+.jc-month-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 16px 14px;
+  border: 2px solid #dbe4ff;
+  box-shadow: 0 4px 16px rgba(59,91,219,0.08);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.2s, border-color 0.2s;
+}
+
+.jc-month-card.visible { opacity: 1; transform: translateY(0); }
+.jc-month-card.visible:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(59,91,219,0.16); border-color: #3b5bdb; }
+
+.jc-month-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #3b5bdb, #748ffc);
+  border-radius: 18px 18px 0 0;
+}
+
+/* ── 월 헤더 ── */
+.jc-month-header {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eef0ff;
+}
+
+.jc-month-name {
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 900;
+  color: #3b5bdb;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+/* ── 강의 목록 ── */
+.jc-month-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jc-month-list li {
+  font-size: clamp(13px, 1.6vw, 18px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+/* 링크 있는 항목 */
+.jc-month-list li a {
+  display: block;
+  color: #1a1a2e;
+  text-decoration: none;
+  padding: 5px 8px 5px 20px;
+  border-radius: 8px;
+  position: relative;
+  transition: background 0.18s, color 0.18s, transform 0.15s;
+  word-break: keep-all;
+}
+
+.jc-month-list li a::before {
+  content: '▸';
+  position: absolute;
+  left: 4px; top: 6px;
+  color: #3b5bdb;
+  font-size: 12px;
+  transition: color 0.18s;
+}
+
+.jc-month-list li a:hover {
+  background: #3b5bdb;
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.jc-month-list li a:hover::before { color: #ffffff; }
+
+/* 링크 없는 항목 */
+.jc-month-list li span.jc-item {
+  display: block;
+  color: #666;
+  padding: 5px 8px 5px 20px;
+  border-radius: 8px;
+  position: relative;
+  word-break: keep-all;
+}
+
+.jc-month-list li span.jc-item::before {
+  content: '▸';
+  position: absolute;
+  left: 4px; top: 6px;
+  color: #ccc;
+  font-size: 12px;
+}
+
+/* 날짜 뱃지 */
+.jc-date {
+  display: inline-block;
+  font-size: clamp(11px, 1.2vw, 14px) !important;
+  color: #3b5bdb;
+  font-weight: 600;
+  background: #eef0ff;
+  padding: 1px 6px;
+  border-radius: 5px;
+  margin-left: 3px;
+  vertical-align: middle;
+  transition: background 0.18s, color 0.18s;
+  white-space: nowrap;
+}
+
+.jc-month-list li a:hover .jc-date {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+/* ── 노트 ── */
+.jc-roadmap-note {
+  margin-top: 36px;
+  background: #dbe4ff;
+  border: 2px solid #3b5bdb;
+  border-radius: 14px;
+  padding: 20px 24px;
+}
+
+.jc-roadmap-note p {
+  font-size: clamp(15px, 1.8vw, 20px);
+  color: #1a1a2e;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+.jc-roadmap-note strong { color: #3b5bdb; }
+</style>
+</head>
+<body>
+<div class="jc-roadmap-wrap">
+
+  <div class="jc-roadmap-banner">
+    <h2>정철대학 <span>강의 로드맵</span></h2>
+    <p>2026 – 2027 전체 강의 출시 일정</p>
+  </div>
+
+  <div class="jc-roadmap-body">
+
+    <div class="jc-roadmap-year">
+      <div class="jc-roadmap-year-label">2026년</div>
+      <div class="jc-roadmap-year-line"></div>
+    </div>
+
+    <div class="jc-roadmap-grid">
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">4월</div></div>
+        <ul class="jc-month-list">
+          <li><a href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%8c%a4%ec%9d%98-%ec%98%81%ec%96%b4%ec%97%94%ec%a7%84-1%eb%8b%a8%ea%b3%84/" target="_blank">영어엔진 1–3단계<span class="jc-date">4월 21일</span></a></li>
+          <li><a href="https://jc.co.kr/product/%ec%98%81%ec%96%b4%eb%a1%9c-%ea%b7%b8%eb%a6%bc%ec%a0%84%eb%8f%84/" target="_blank">영어로 그림전도</a></li>
+          <li><a href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%9d%98-%eb%a1%9c%eb%a7%88%ec%84%9c-%ed%86%b5%eb%8f%85%ec%95%94%ec%86%a1/" target="_blank">로마서 8장</a></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">5월</div></div>
+        <ul class="jc-month-list">
+          <li><a href="https://jc.co.kr/product/%ec%a3%bd%ec%9d%80%ec%98%81%ec%96%b4%ec%82%b4%eb%a6%ac%ea%b8%b0/" target="_blank">죽은영어살리기 1<span class="jc-date">5/14</span></a></li>
+          <li><a href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%9d%98-%ec%82%ac%eb%8f%84%ed%96%89%ec%a0%84-%ed%86%b5%eb%8f%85%ec%95%94%ec%86%a1/" target="_blank">산상수훈 1권<span class="jc-date">5/18</span></a></li>
+          <li><a href="#" target="_blank">야고보서 1권<span class="jc-date">5/18</span></a></li>
+          <li><a href="https://jc.co.kr/product/%ec%99%95%ec%b4%88%eb%b3%b4-%ed%8c%8c%eb%8b%89%ec%8a%a4/" target="_blank">왕초보 파닉스<span class="jc-date">5/28</span></a></li>
+          <li><a href="https://jc.co.kr/product/numbers/" target="_blank">왕초보 숫자영어<span class="jc-date">5/28</span></a></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">6월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">영어엔진 4단계 (동사)</span></li>
+          <li><span class="jc-item">왕초보 패턴회화</span></li>
+          <li><span class="jc-item">야고보서 2권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">7월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">영어엔진 5단계</span></li>
+          <li><a href="https://jc.co.kr/product/%ec%a3%bd%ec%9d%80%ec%98%81%ec%96%b4%ec%82%b4%eb%a6%ac%ea%b8%b0/" target="_blank">죽은영어살리기 2</a></li>
+          <li><a href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%9d%98-%ec%82%ac%eb%8f%84%ed%96%89%ec%a0%84-%ed%86%b5%eb%8f%85%ec%95%94%ec%86%a1/" target="_blank">산상수훈 2권</a></li>
+          <li><span class="jc-item">요한복음 1권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">8월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">영어엔진 6단계</span></li>
+          <li><a href="https://jc.co.kr/product/%ec%a3%bd%ec%9d%80%ec%98%81%ec%96%b4%ec%82%b4%eb%a6%ac%ea%b8%b0/" target="_blank">죽은영어살리기 3</a></li>
+          <li><span class="jc-item">야고보서 3권</span></li>
+          <li><span class="jc-item">요한복음 2권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">9월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">리바이벌 잉글리쉬 1<span class="jc-date">9월 말</span></span></li>
+          <li><span class="jc-item">요한복음 3권</span></li>
+          <li><span class="jc-item">죽은문법살리기</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">10월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">리바이벌 잉글리쉬 2</span></li>
+          <li><span class="jc-item">요한복음 4권</span></li>
+          <li><span class="jc-item">직독직해</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">11월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">리바이벌 잉글리쉬 3</span></li>
+          <li><span class="jc-item">요한복음 5권</span></li>
+          <li><span class="jc-item">속독속해</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">12월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">리바이벌 잉글리쉬 4</span></li>
+          <li><span class="jc-item">요한복음 6권<span class="jc-date">A세트 🎉</span></span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="jc-roadmap-year">
+      <div class="jc-roadmap-year-label">2027년</div>
+      <div class="jc-roadmap-year-line"></div>
+    </div>
+
+    <div class="jc-roadmap-grid">
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">1월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">리바이벌 잉글리쉬 5</span></li>
+          <li><span class="jc-item">요나서 (완결)</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">2월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">리바이벌 잉글리쉬 6</span></li>
+          <li><span class="jc-item">요나서 (완결)</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">3월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">뉴욕 잉글리쉬</span></li>
+          <li><span class="jc-item">스토리북 1</span></li>
+          <li><span class="jc-item">요셉이야기 1–2권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">4월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요셉이야기 3–4권</span></li>
+          <li><span class="jc-item">리얼비즈니스토크 1, 2</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">6월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요셉이야기 5권</span></li>
+          <li><span class="jc-item">요한일서 1권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">7월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요한복음 7권</span></li>
+          <li><span class="jc-item">요한일서 2권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">8월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요한복음 8권</span></li>
+          <li><span class="jc-item">요한일서 3권<span class="jc-date">완결 🎉</span></span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">9월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요한복음 9권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">10월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">Hit verb 동치미</span></li>
+          <li><span class="jc-item">요한복음 10권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">11월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요한복음 11권</span></li>
+        </ul>
+      </div>
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">12월</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요한복음 12권<span class="jc-date">요영통 🎉</span></span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="jc-roadmap-year">
+      <div class="jc-roadmap-year-label">2028년</div>
+      <div class="jc-roadmap-year-line"></div>
+    </div>
+
+    <div class="jc-roadmap-grid">
+
+      <div class="jc-month-card">
+        <div class="jc-month-header"><div class="jc-month-name">추후 공개</div></div>
+        <ul class="jc-month-list">
+          <li><span class="jc-item">요셉 B세트</span></li>
+          <li><span class="jc-item">사도행전</span></li>
+          <li><span class="jc-item">성영암 (리뉴얼)</span></li>
+          <li><span class="jc-item">요셉말하기</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function() {
+  var cards = document.querySelectorAll('.jc-month-card');
+  if (!cards.length) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var card = entry.target;
+        var idx = Array.prototype.indexOf.call(cards, card);
+        setTimeout(function() { card.classList.add('visible'); }, (idx % 4) * 80);
+        observer.unobserve(card);
+      }
+    });
+  }, { threshold: 0.1 });
+  cards.forEach(function(card) { observer.observe(card); });
+})();
+</script>
+</body>
+</html>
