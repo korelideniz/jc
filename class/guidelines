@@ -24,7 +24,7 @@
 /* ── HEADER ── */
 .fm-header {
   text-align: center;
-  padding: 80px 24px 64px;
+  padding: 160px 24px 64px;
   background: linear-gradient(135deg, #1A1A2E 0%, #16213E 55%, #0F3460 100%);
   position: relative; overflow: hidden;
 }
@@ -272,7 +272,7 @@
   .fm-header p  { font-size: 26px; }
 }
 @media (max-width: 480px) {
-  .fm-header { padding: 56px 18px 44px; }
+  .fm-header { padding: 100px 18px 44px; }
   .fm-content { padding: 26px 18px; gap: 16px; }
 
   /* 텍스트 2배 확대 (소형 모바일) */
