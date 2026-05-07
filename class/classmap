@@ -92,7 +92,7 @@
 #rm .yr-num{font-family:'Pretendard',sans-serif;font-size:86px;font-weight:900;line-height:1;letter-spacing:-4px;}
 #rm .yr-num.y26{color:#FFE500;text-shadow:2px 2px 0 rgba(0,0,0,.3);}
 #rm .yr-num.y27{color:#F0C080;text-shadow:2px 2px 0 rgba(0,0,0,.3);}
-#rm .yr-num.y28{color:#666;text-shadow:none;}
+#rm .yr-num.y28{color:#fff;text-shadow:2px 2px 0 rgba(0,0,0,.3);}
 #rm .yr-line{flex:1;height:2px;}
 #rm .yr-line.y26{background:repeating-linear-gradient(90deg,#FFE500 0,#FFE500 8px,transparent 8px,transparent 14px);opacity:.4;}
 #rm .yr-line.y27{background:repeating-linear-gradient(90deg,#F0C080 0,#F0C080 8px,transparent 8px,transparent 14px);opacity:.4;}
@@ -186,9 +186,9 @@
 
 /* ════ 2028 추후 공개 섹션 ════ */
 #rm .cs-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px 72px;text-align:center;gap:24px;}
-#rm .cs-title{font-family:'Pretendard',sans-serif;font-size:52px;font-weight:900;color:#666;letter-spacing:-2px;line-height:1.2;}
-#rm .cs-sub{font-family:'Pretendard',sans-serif;font-size:22px;font-weight:600;color:#555;line-height:1.8;max-width:600px;}
-#rm .cs-badge{font-family:'Pretendard',sans-serif;font-size:20px;font-weight:900;color:#666;background:rgba(255,255,255,.04);border:2px dashed #444;border-radius:6px;padding:14px 32px;}
+#rm .cs-title{font-family:'Pretendard',sans-serif;font-size:52px;font-weight:900;color:#F5F0E8;letter-spacing:-2px;line-height:1.2;text-shadow:2px 2px 0 rgba(0,0,0,.3);}
+#rm .cs-sub{font-family:'Pretendard',sans-serif;font-size:22px;font-weight:600;color:rgba(245,240,232,0.7);line-height:1.8;max-width:600px;}
+#rm .cs-badge{font-family:'Pretendard',sans-serif;font-size:20px;font-weight:900;color:#F5F0E8;background:rgba(255,255,255,.08);border:2px dashed rgba(245,240,232,0.4);border-radius:6px;padding:14px 32px;}
 
 /* ════ 푸터 ════ */
 #rm .foot{text-align:center;padding:28px 20px;font-family:'Special Elite',serif;font-size:16px;color:rgba(245,240,232,.3);background:#182c22;border-top:2px solid #3a6050;}
@@ -232,7 +232,7 @@
 
   <div class="hd">
     <div class="hd-inner">
-      <div class="hd-eyebrow">Jeongchul University</div>
+      <div class="hd-eyebrow">jungchul University</div>
       <div class="hd-dash"></div>
       <div class="hd-title"><span class="hd-title-wrap">무제한 영어<br>강의 계획표</span></div>
       <div class="hd-sub">— 전공 과정 &amp; 평생 과정 공개 예정일 —</div>
@@ -275,7 +275,7 @@
 
   <div id="rm-content"></div>
 
-  <div class="foot">✎ © 2026 정철대학 · Jeongchul University · All Rights Reserved</div>
+  <div class="foot">✎ © 2026 정철대학 · jungchul University · All Rights Reserved</div>
 </div>
 </div>
 
@@ -430,7 +430,7 @@ function render(){
     +"<div class='yr-line y28'></div></div>"
     +"<div class='cs-wrap fu' style='animation-delay:"+nd().toFixed(2)+"s;animation-play-state:paused;'>"
       +"<div class='cs-title'>2028년 이후 강의</div>"
-      +"<div class='cs-sub'>&#10022; &#50836;&#49839; B&#49464;&#53944; &nbsp;&#10022; &#49324;&#46020;&#54665;&#51204; &nbsp;&#10022; &#49457;&#50689;&#50504;(&#47532;&#45684;&#50619;) &nbsp;&#10022; &#50836;&#49839;&#47568;&#54616;&#44592;<br>&#44536; &#50808; &#49352;&#47196;&#50868; &#52964;&#47532;&#53972;&#47579;&#46308;&#51060; &#44228;&#49549; &#52628;&#44032;&#46420; &#50696;&#51221;&#51077;&#45768;&#45796;</div>"
+      +"<div class='cs-sub'>이후 공개 예정입니다.</div>"
       +"<div class='cs-badge'>&#128197; &#52628;&#54980; &#44277;&#44060; &#50696;&#51221;</div>"
     +"</div>"
     +"<div class='divider'></div>";
