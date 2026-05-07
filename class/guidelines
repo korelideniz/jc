@@ -1,0 +1,498 @@
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+.fm-wrap * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; }
+
+.fm-wrap {
+  --c-begin: #FF6B35; --c-begin-lt: #FFF3EE; --c-begin-dk: #C94A10;
+  --c-gram:  #2D6BE4; --c-gram-lt:  #EEF3FF; --c-gram-dk:  #1A45A0;
+  --c-trvl:  #00B894; --c-trvl-lt:  #E6FAF7; --c-trvl-dk:  #007A63;
+  --c-biz:   #6C3FC5; --c-biz-lt:   #F2EDFF; --c-biz-dk:   #4A2A8A;
+  --c-faith: #C8860A; --c-faith-lt: #FDF8E6; --c-faith-dk: #8A5C00;
+  --c-read:  #E0334C; --c-read-lt:  #FFF0F2; --c-read-dk:  #A01030;
+  /* ── 워드프레스 컨테이너 강제 풀와이드 ── */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow-x: hidden;
+  background: #F8F7F4;
+}
+
+/* ── HEADER ── */
+.fm-header {
+  text-align: center;
+  padding: 80px 24px 64px;
+  background: linear-gradient(135deg, #1A1A2E 0%, #16213E 55%, #0F3460 100%);
+  position: relative; overflow: hidden;
+}
+.fm-header::before, .fm-header::after {
+  content: ''; position: absolute; border-radius: 50%;
+}
+.fm-header::before {
+  width: 640px; height: 640px;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  top: -220px; left: -120px;
+  animation: fm-pulse 8s ease-in-out infinite;
+}
+.fm-header::after {
+  width: 440px; height: 440px;
+  background: radial-gradient(circle, rgba(255,200,80,0.07) 0%, transparent 70%);
+  bottom: -110px; right: -60px;
+  animation: fm-pulse 6s ease-in-out infinite reverse;
+}
+@keyframes fm-pulse {
+  0%,100% { transform: scale(1); opacity: .5; }
+  50%      { transform: scale(1.2); opacity: 1; }
+}
+.fm-header h1 {
+  font-size: clamp(40px, 7vw, 88px);
+  font-weight: 900; color: #fff;
+  line-height: 1.2; margin-bottom: 18px;
+  position: relative; z-index: 1;
+}
+.fm-header h1 span { color: #FFD166; }
+.fm-header p {
+  font-size: clamp(20px, 3vw, 38px);
+  color: rgba(255,255,255,.75);
+  font-weight: 500; position: relative; z-index: 1;
+}
+
+/* ── NAV ── */
+.fm-nav {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  padding: 24px 20px; background: #1A1A2E;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 4px 24px rgba(0,0,0,.35);
+}
+.fm-nav a {
+  padding: 10px 22px; border-radius: 50px;
+  font-size: clamp(15px, 2vw, 22px); font-weight: 800;
+  color: #fff; text-decoration: none;
+  transition: transform .22s, box-shadow .22s;
+  display: inline-block;
+}
+.fm-nav a:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 8px 20px rgba(0,0,0,.3); }
+.fm-nav .n-begin { background: var(--c-begin); }
+.fm-nav .n-gram  { background: var(--c-gram); }
+.fm-nav .n-trvl  { background: var(--c-trvl); }
+.fm-nav .n-biz   { background: var(--c-biz); }
+.fm-nav .n-faith { background: var(--c-faith); }
+.fm-nav .n-read  { background: var(--c-read); }
+
+/* ── CARDS WRAP ── */
+.fm-cards {
+  max-width: 1120px; margin: 0 auto;
+  padding: 64px 20px 100px;
+  display: flex; flex-direction: column; gap: 80px;
+}
+
+/* ── CARD ── */
+.fm-card {
+  border-radius: 28px; overflow: hidden;
+  box-shadow: 0 16px 60px rgba(0,0,0,.13);
+  opacity: 0; transform: translateY(64px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+.fm-card.fm-visible { opacity: 1; transform: translateY(0); }
+
+.fm-card-inner {
+  display: grid; grid-template-columns: 1fr 1fr; min-height: 440px;
+}
+.fm-card:nth-child(even) .fm-card-inner { direction: rtl; }
+.fm-card:nth-child(even) .fm-card-inner > * { direction: ltr; }
+
+/* IMAGE */
+.fm-img { position: relative; overflow: hidden; min-height: 320px; }
+.fm-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s ease; display: block;
+}
+.fm-card:hover .fm-img img { transform: scale(1.06); }
+.fm-img-ov {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.35));
+}
+
+/* CONTENT */
+.fm-content {
+  padding: 50px 44px;
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 20px;
+  position: relative; overflow: hidden;
+}
+.fm-content::before {
+  content: ''; position: absolute;
+  width: 320px; height: 320px; border-radius: 50%;
+  opacity: .07; bottom: -90px; right: -90px;
+  background: currentColor;
+}
+
+/* BADGE */
+.fm-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 26px; border-radius: 50px;
+  font-size: clamp(20px, 2.5vw, 32px); font-weight: 900;
+  color: #fff; width: fit-content;
+}
+
+/* TITLE */
+.fm-title {
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 900; line-height: 1.3;
+}
+
+/* QUOTE */
+.fm-quote {
+  font-size: clamp(17px, 2vw, 27px); font-weight: 600;
+  line-height: 1.7; padding: 16px 20px;
+  border-radius: 12px; border-left: 6px solid;
+  font-style: italic; color: #333;
+}
+
+/* DESC */
+.fm-desc {
+  font-size: clamp(17px, 1.9vw, 26px);
+  line-height: 1.75; color: #444; font-weight: 500;
+}
+
+/* CURRICULUM */
+.fm-cur { margin-top: 4px; }
+.fm-cur-label {
+  font-size: clamp(14px, 1.6vw, 20px); font-weight: 700;
+  color: #999; text-transform: uppercase; letter-spacing: 1.5px;
+  margin-bottom: 12px;
+}
+.fm-steps {
+  display: flex; flex-wrap: wrap;
+  align-items: center; gap: 8px;
+}
+
+/* ── STEP BUTTON with pulse ── */
+.fm-step {
+  display: inline-block;
+  padding: 12px 20px; border-radius: 10px;
+  font-size: clamp(14px, 1.6vw, 20px); font-weight: 800;
+  color: #fff; text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  animation: fm-step-pulse 2.2s ease-in-out infinite;
+  transition: transform .18s, box-shadow .18s;
+  box-shadow: 0 0 0 0 rgba(0,0,0,0);
+}
+.fm-step:hover {
+  transform: scale(1.12) translateY(-2px) !important;
+  animation-play-state: paused;
+  text-decoration: none; color: #fff;
+}
+
+/* stagger delays so they don't all pulse together */
+.fm-steps .fm-step:nth-child(1) { animation-delay: 0s; }
+.fm-steps .fm-step:nth-child(3) { animation-delay: 0.35s; }
+.fm-steps .fm-step:nth-child(5) { animation-delay: 0.7s; }
+.fm-steps .fm-step:nth-child(7) { animation-delay: 1.05s; }
+
+@keyframes fm-step-pulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.07); }
+  55%  { transform: scale(0.97); }
+  70%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.fm-arrow {
+  font-size: clamp(18px, 2vw, 26px); color: #bbb; font-weight: 900;
+}
+
+/* ── PER-THEME colours ── */
+/* BEGINNER */
+.fm-card.c-begin .fm-content { background: var(--c-begin-lt); }
+.fm-card.c-begin .fm-badge   { background: var(--c-begin); }
+.fm-card.c-begin .fm-title   { color: var(--c-begin-dk); }
+.fm-card.c-begin .fm-quote   { background: rgba(255,107,53,.08); border-color: var(--c-begin); }
+.fm-card.c-begin .fm-step    { background: var(--c-begin); }
+/* GRAMMAR */
+.fm-card.c-gram .fm-content { background: var(--c-gram-lt); }
+.fm-card.c-gram .fm-badge   { background: var(--c-gram); }
+.fm-card.c-gram .fm-title   { color: var(--c-gram-dk); }
+.fm-card.c-gram .fm-quote   { background: rgba(45,107,228,.08); border-color: var(--c-gram); }
+.fm-card.c-gram .fm-step    { background: var(--c-gram); }
+/* TRAVEL */
+.fm-card.c-trvl .fm-content { background: var(--c-trvl-lt); }
+.fm-card.c-trvl .fm-badge   { background: var(--c-trvl); }
+.fm-card.c-trvl .fm-title   { color: var(--c-trvl-dk); }
+.fm-card.c-trvl .fm-quote   { background: rgba(0,184,148,.08); border-color: var(--c-trvl); }
+.fm-card.c-trvl .fm-step    { background: var(--c-trvl); }
+/* BIZ */
+.fm-card.c-biz .fm-content { background: var(--c-biz-lt); }
+.fm-card.c-biz .fm-badge   { background: var(--c-biz); }
+.fm-card.c-biz .fm-title   { color: var(--c-biz-dk); }
+.fm-card.c-biz .fm-quote   { background: rgba(108,63,197,.08); border-color: var(--c-biz); }
+.fm-card.c-biz .fm-step    { background: var(--c-biz); }
+/* FAITH */
+.fm-card.c-faith .fm-content { background: var(--c-faith-lt); }
+.fm-card.c-faith .fm-badge   { background: var(--c-faith); color: #fff; }
+.fm-card.c-faith .fm-title   { color: var(--c-faith-dk); }
+.fm-card.c-faith .fm-quote   { background: rgba(200,134,10,.09); border-color: var(--c-faith); }
+.fm-card.c-faith .fm-step    { background: var(--c-faith); color: #fff; }
+/* READING */
+.fm-card.c-read .fm-content { background: var(--c-read-lt); }
+.fm-card.c-read .fm-badge   { background: var(--c-read); }
+.fm-card.c-read .fm-title   { color: var(--c-read-dk); }
+.fm-card.c-read .fm-quote   { background: rgba(224,51,76,.08); border-color: var(--c-read); }
+.fm-card.c-read .fm-step    { background: var(--c-read); }
+
+/* 링크 없는 버튼 */
+.fm-step.no-link {
+  cursor: default;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 800px) {
+  .fm-card-inner { grid-template-columns: 1fr !important; direction: ltr !important; }
+  .fm-card:nth-child(even) .fm-card-inner { direction: ltr; }
+  .fm-img { min-height: 230px; }
+  .fm-content { padding: 32px 24px; }
+  .fm-cards { gap: 44px; padding: 40px 16px 80px; }
+
+  /* 텍스트 2배 확대 */
+  .fm-badge    { font-size: 28px; padding: 10px 22px; }
+  .fm-title    { font-size: 34px; line-height: 1.3; }
+  .fm-quote    { font-size: 24px; line-height: 1.7; }
+  .fm-desc     { font-size: 22px; line-height: 1.75; }
+  .fm-cur-label { font-size: 18px; }
+  .fm-step     { font-size: 20px; padding: 12px 18px; }
+  .fm-arrow    { font-size: 22px; }
+  .fm-nav a    { font-size: 18px; padding: 10px 18px; }
+  .fm-header h1 { font-size: 52px; }
+  .fm-header p  { font-size: 26px; }
+}
+@media (max-width: 480px) {
+  .fm-header { padding: 56px 18px 44px; }
+  .fm-content { padding: 26px 18px; gap: 16px; }
+
+  /* 텍스트 2배 확대 (소형 모바일) */
+  .fm-badge    { font-size: 24px; padding: 8px 18px; }
+  .fm-title    { font-size: 30px; }
+  .fm-quote    { font-size: 22px; }
+  .fm-desc     { font-size: 20px; }
+  .fm-cur-label { font-size: 16px; }
+  .fm-step     { font-size: 18px; padding: 10px 14px; }
+  .fm-arrow    { font-size: 20px; }
+  .fm-nav a    { font-size: 16px; padding: 8px 14px; }
+  .fm-header h1 { font-size: 40px; }
+  .fm-header p  { font-size: 22px; }
+}
+</style>
+
+<div class="fm-wrap">
+
+  <!-- HEADER -->
+  <div class="fm-header">
+    <h1>나에게 맞는<br><span>영어 학습 여정</span>을 찾아보세요</h1>
+    <p>당신의 목표에 꼭 맞는 커리큘럼을 안내해 드립니다</p>
+  </div>
+
+  <!-- NAV -->
+  <nav class="fm-nav">
+    <a class="n-begin" href="#fm-begin">🌱 왕초보</a>
+    <a class="n-gram"  href="#fm-gram">📘 문법</a>
+    <a class="n-trvl"  href="#fm-trvl">✈️ 여행</a>
+    <a class="n-biz"   href="#fm-biz">💼 비즈니스</a>
+    <a class="n-read"  href="#fm-read">📖 독해</a>
+    <a class="n-faith" href="#fm-faith">✝️ 신앙</a>
+  </nav>
+
+  <!-- CARDS -->
+  <div class="fm-cards">
+
+    <!-- 왕초보 -->
+    <div class="fm-card c-begin" id="fm-begin">
+      <div class="fm-card-inner">
+        <div class="fm-img">
+          <img src="https://github.com/user-attachments/assets/76560db1-8adb-4534-b8d1-5182e3a950b3" alt="왕초보 영어">
+          <div class="fm-img-ov"></div>
+        </div>
+        <div class="fm-content">
+          <div class="fm-badge">🌱 왕초보</div>
+          <h2 class="fm-title">왕초보 탈출,<br>다시 시작하는 용기의 길</h2>
+          <div class="fm-quote">"ABC부터 차근차근, 이번만큼은 포기하지 않고 기초를 끝내고 싶다!"</div>
+          <p class="fm-desc">영어 공부를 다시 시작하고 싶지만 어디서부터 손대야 할 지 막막한 분</p>
+          <div class="fm-cur">
+            <div class="fm-cur-label">추천 커리큘럼</div>
+            <div class="fm-steps">
+              <a class="fm-step" href="https://jc.co.kr/product/%ec%99%95%ec%b4%88%eb%b3%b4-%ed%8c%8c%eb%8b%89%ec%8a%a4/" target="_blank">왕초보 파닉스</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step" href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%8c%a4%ec%9d%98-%ec%98%81%ec%96%b4%ec%97%94%ec%a7%84-1%eb%8b%a8%ea%b3%84/" target="_blank">영어엔진 1-3단계</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step" href="https://jc.co.kr/product/%ec%99%95%ec%b4%88%eb%b3%b4-%ed%8c%a8%ed%84%b4%ed%9a%8c%ed%99%94/" target="_blank">왕초보 패턴회화</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 문법 -->
+    <div class="fm-card c-gram" id="fm-gram">
+      <div class="fm-card-inner">
+        <div class="fm-img">
+          <img src="https://github.com/user-attachments/assets/5d4c76f3-b823-42cb-a8c3-73caea1cb61c" alt="영어 문법">
+          <div class="fm-img-ov"></div>
+        </div>
+        <div class="fm-content">
+          <div class="fm-badge">📘 문법</div>
+          <h2 class="fm-title">평생 숙제,<br>문법 마스터의 길</h2>
+          <div class="fm-quote">"항상 막혔던 문법, 이제는 제대로 깨우치고 싶다!"</div>
+          <p class="fm-desc">한 번 들으면 절대 잊지 않게 되는 문법 마스터의 길로 가고 싶은 분</p>
+          <div class="fm-cur">
+            <div class="fm-cur-label">추천 커리큘럼</div>
+            <div class="fm-steps">
+              <a class="fm-step" href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%8c%a4%ec%9d%98-%ec%98%81%ec%96%b4%ec%97%94%ec%a7%84-1%eb%8b%a8%ea%b3%84/" target="_blank">영어엔진 1-3단계</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step" href="https://jc.co.kr/product/%eb%a6%ac%eb%b0%94%ec%9d%b4%eb%b2%8c-%ec%9e%89%ea%b8%80%eb%a6%ac%ec%89%ac-1/" target="_blank">리바이벌 잉글리쉬 1-6</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 여행 -->
+    <div class="fm-card c-trvl" id="fm-trvl">
+      <div class="fm-card-inner">
+        <div class="fm-img">
+          <img src="https://github.com/user-attachments/assets/1b2950c4-9e2e-4788-bff0-fcde349b8844" alt="여행 영어">
+          <div class="fm-img-ov"></div>
+        </div>
+        <div class="fm-content">
+          <div class="fm-badge">✈️ 여행</div>
+          <h2 class="fm-title">당당한 해외여행<br>첫걸음의 길</h2>
+          <div class="fm-quote">"해외에서 'Hello' 이후가 두려운 여행자를 위해"</div>
+          <p class="fm-desc">패키지 말고 자유여행을 꿈꾸거나, 외국인 앞에 자신 있게 서고 싶은 분</p>
+          <div class="fm-cur">
+            <div class="fm-cur-label">추천 커리큘럼</div>
+            <div class="fm-steps">
+              <a class="fm-step" href="https://jc.co.kr/product/%ec%a0%95%ec%b2%a0%ec%8c%a4%ec%9d%98-%ec%98%81%ec%96%b4%ec%97%94%ec%a7%84-1%eb%8b%a8%ea%b3%84/" target="_blank">영어엔진 1-3단계</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step" href="https://jc.co.kr/product/%eb%a6%ac%eb%b0%94%ec%9d%b4%eb%b2%8c-%ec%9e%89%ea%b8%80%eb%a6%ac%ec%89%ac-1/" target="_blank">리바이벌 잉글리쉬 1-6</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 비즈니스 -->
+    <div class="fm-card c-biz" id="fm-biz">
+      <div class="fm-card-inner">
+        <div class="fm-img">
+          <img src="https://github.com/user-attachments/assets/1c66b008-aa71-4caf-a626-d0ea64bcdfd9" alt="비즈니스 영어">
+          <div class="fm-img-ov"></div>
+        </div>
+        <div class="fm-content">
+          <div class="fm-badge">💼 비즈니스</div>
+          <h2 class="fm-title">실전 비즈니스 및<br>자기계발의 길</h2>
+          <div class="fm-quote">"업무 현장에서 바로 쓰는 생생한 영어, 진짜 프로의 언어를 배우고 싶다!"</div>
+          <p class="fm-desc">이직을 준비하거나 비즈니스 미팅, 해외 업무가 잦은 직장인</p>
+          <div class="fm-cur">
+            <div class="fm-cur-label">추천 커리큘럼</div>
+            <div class="fm-steps">
+              <a class="fm-step no-link">리얼비즈니스토크 1,2</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step" href="https://jc.co.kr/product/%eb%a6%ac%eb%b0%94%ec%9d%b4%eb%b2%8c-%ec%9e%89%ea%b8%80%eb%a6%ac%ec%89%ac-1/" target="_blank">리바이벌 잉글리쉬 시리즈</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">뉴욕 잉글리쉬</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 독해 -->
+    <div class="fm-card c-read" id="fm-read">
+      <div class="fm-card-inner">
+        <div class="fm-img">
+          <img src="https://github.com/user-attachments/assets/cdb3cb9f-d4f9-4546-971b-1f83703b770b" alt="영어 독해">
+          <div class="fm-img-ov"></div>
+        </div>
+        <div class="fm-content">
+          <div class="fm-badge">📖 독해</div>
+          <h2 class="fm-title">논리적 독해와<br>문해력 완성의 길</h2>
+          <div class="fm-quote">"문장을 정확하게 분석하고 빠르게 읽어내고 싶다!"</div>
+          <p class="fm-desc">영어 원서를 읽고 싶거나, 각종 시험(수능, 편입, 공무원 등)을 준비하고 싶으신 분</p>
+          <div class="fm-cur">
+            <div class="fm-cur-label">추천 커리큘럼</div>
+            <div class="fm-steps">
+              <a class="fm-step no-link">영어엔진 4~6단계</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">직독직해</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">속독속해</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">지텔프</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 신앙 -->
+    <div class="fm-card c-faith" id="fm-faith">
+      <div class="fm-card-inner">
+        <div class="fm-img">
+          <img src="https://github.com/user-attachments/assets/7dbbb497-9070-4480-a6f0-f4feec7ebe84" alt="선교 영어">
+          <div class="fm-img-ov"></div>
+        </div>
+        <div class="fm-content">
+          <div class="fm-badge">✝️ 신앙</div>
+          <h2 class="fm-title">사명을 전하는<br>선교 영어의 길</h2>
+          <div class="fm-quote">"복음의 소식을 온 세상에 전하고 싶은 분들을 위해"</div>
+          <p class="fm-desc">선교지에서 간증을 하거나, 성경을 영어로 전하고 묵상하고자 하는 크리스천</p>
+          <div class="fm-cur">
+            <div class="fm-cur-label">추천 커리큘럼</div>
+            <div class="fm-steps">
+              <a class="fm-step no-link">영어로 그림전도</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">산상수훈 시리즈</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">야고보서 시리즈</a>
+              <span class="fm-arrow">→</span>
+              <a class="fm-step no-link">요한복음 시리즈</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /fm-cards -->
+</div><!-- /fm-wrap -->
+
+<script>
+(function(){
+  // Scroll reveal
+  var cards = document.querySelectorAll('.fm-card');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting) e.target.classList.add('fm-visible');
+      });
+    }, { threshold: 0.1 });
+    cards.forEach(function(c){ obs.observe(c); });
+  } else {
+    cards.forEach(function(c){ c.classList.add('fm-visible'); });
+  }
+
+  // Smooth scroll nav
+  document.querySelectorAll('.fm-nav a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = a.getAttribute('href');
+      if(href && href.startsWith('#')){
+        var el = document.querySelector(href);
+        if(el){ e.preventDefault(); el.scrollIntoView({ behavior:'smooth', block:'center' }); }
+      }
+    });
+  });
+})();
+</script>
