@@ -1,0 +1,824 @@
+<!-- 정철대학 커리큘럼 로드맵 | STEP 단계형 | 워드프레스 완전호환 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+
+<style id="jcrms-css">
+/* ── 워드프레스 여백 제거 ── */
+.elementor-widget-html .elementor-widget-container,
+.elementor-widget-html .elementor-column-wrap,
+.elementor-widget-html .elementor-column,
+.elementor-widget-html .elementor-row,
+.elementor-widget-html .e-con-inner {
+  padding-left:0!important; padding-right:0!important; max-width:100%!important;
+}
+#jcrms-outer {
+  width:100vw; position:relative; left:50%; margin-left:-50vw;
+  overflow-x:hidden; box-sizing:border-box;
+}
+
+/* ════════════════════════════════════
+   디자인 방향: 모던 에디토리얼
+   배경: 크림 오프화이트 #FAF8F4
+   전공: 딥 네이비 #1A2744
+   평생: 버건디 #7D2E3E
+   완결: 골드 #C8941A
+   라인: 연한 세피아 #D4C9B8
+════════════════════════════════════ */
+
+#jcrms {
+  font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+  background:#FAF8F4;
+  color:#1A1A1A;
+  box-sizing:border-box; width:100%;
+  -webkit-font-smoothing:antialiased;
+}
+#jcrms * { box-sizing:inherit; }
+
+/* ── 애니메이션 ── */
+@keyframes jcs-up   { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+@keyframes jcs-in   { from{opacity:0;} to{opacity:1;} }
+@keyframes jcs-line { from{width:0;} to{width:100%;} }
+@keyframes jcs-blink{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+/* ════ 헤더 ════ */
+#jcrms .hd {
+  background:#1A2744;
+  padding:160px 60px 150px;
+  display:flex; flex-direction:column; align-items:center;
+  text-align:center; gap:24px; position:relative; overflow:hidden;
+  animation:jcs-in .6s ease both;
+}
+#jcrms .hd::before {
+  content:'';
+  position:absolute; bottom:-1px; left:0; right:0; height:60px;
+  background:#FAF8F4;
+  clip-path:ellipse(55% 100% at 50% 100%);
+}
+/* 격자 배경 */
+#jcrms .hd::after {
+  content:'';
+  position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size:48px 48px;
+}
+#jcrms .hd-inner { position:relative; z-index:2; }
+#jcrms .hd-tag {
+  display:inline-block;
+  background:#C8941A; color:#fff;
+  font-size:13px; font-weight:800; letter-spacing:4px;
+  padding:8px 20px; border-radius:30px; text-transform:uppercase;
+  animation:jcs-up .5s ease .1s both;
+}
+#jcrms .hd-title {
+  font-family:'Pretendard',sans-serif;
+  font-size:68px; font-weight:900; line-height:1.2; margin:0;
+  color:#FFFFFF; letter-spacing:-2px;
+  animation:jcs-up .55s ease .15s both;
+}
+#jcrms .hd-title span { color:#C8941A; }
+#jcrms .hd-sub {
+  font-size:24px; color:rgba(255,255,255,.6); font-weight:500; margin:0;
+  animation:jcs-up .5s ease .2s both;
+}
+#jcrms .hd-desc {
+  font-size:20px; color:rgba(255,255,255,.45); font-weight:400;
+  max-width:560px; line-height:1.7; margin:0;
+  animation:jcs-up .5s ease .25s both;
+}
+#jcrms .hd-badges {
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  animation:jcs-up .5s ease .3s both;
+}
+#jcrms .hd-badge {
+  display:flex; align-items:center; gap:8px;
+  padding:12px 24px; border-radius:8px; font-size:19px; font-weight:700;
+  border:1.5px solid;
+}
+#jcrms .hd-badge-u { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); color:#fff; }
+#jcrms .hd-badge-l { background:rgba(200,148,26,.12); border-color:rgba(200,148,26,.35); color:#C8941A; }
+#jcrms .hd-badge-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+/* ════ STEP 진행 바 (PC sticky) ════ */
+#jcrms .step-nav {
+  position:sticky; top:0; z-index:999;
+  background:#fff;
+  border-bottom:2px solid #E8E2D8;
+  padding:0 60px;
+  display:flex; align-items:center; gap:0;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+  animation:jcs-in .4s ease .5s both;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+#jcrms .step-nav::-webkit-scrollbar { display:none; }
+#jcrms .snav-btn {
+  display:flex; flex-direction:column; align-items:center;
+  padding:14px 24px; background:none; border:none; cursor:pointer;
+  font-family:'Pretendard',sans-serif;
+  gap:4px; flex-shrink:0; position:relative;
+  transition:color .15s;
+  color:#888;
+}
+#jcrms .snav-btn::after {
+  content:''; position:absolute; bottom:0; left:8%; right:8%;
+  height:3px; border-radius:3px 3px 0 0;
+  background:#1A2744; transform:scaleX(0); transition:transform .2s;
+}
+#jcrms .snav-btn:hover { color:#1A2744; }
+#jcrms .snav-btn:hover::after { transform:scaleX(1); }
+#jcrms .snav-btn.active { color:#1A2744; }
+#jcrms .snav-btn.active::after { transform:scaleX(1); }
+#jcrms .snav-num {
+  font-size:13px; font-weight:900; letter-spacing:2px; text-transform:uppercase;
+}
+#jcrms .snav-label { font-size:19px; font-weight:800; white-space:nowrap; }
+#jcrms .snav-divider { width:1px; height:28px; background:#E8E2D8; flex-shrink:0; margin:0 4px; }
+
+/* ════ STEP 섹션 ════ */
+#jcrms .step-section { padding:0 0 80px; }
+
+/* STEP 헤더 */
+#jcrms .step-hd {
+  display:flex; align-items:stretch;
+  margin-bottom:0; position:relative;
+}
+/* 왼쪽 큰 번호 */
+#jcrms .step-num-col {
+  width:220px; flex-shrink:0;
+  background:#1A2744;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:48px 24px; gap:8px;
+  position:relative;
+}
+#jcrms .step-num-col::after {
+  content:'';
+  position:absolute; right:-24px; top:0; bottom:0;
+  width:24px;
+  background:#1A2744;
+  clip-path:polygon(0 0, 0 100%, 100% 50%);
+}
+#jcrms .step-step {
+  font-size:12px; font-weight:900; letter-spacing:4px;
+  color:rgba(255,255,255,.5); text-transform:uppercase;
+}
+#jcrms .step-n {
+  font-family:'Pretendard',sans-serif;
+  font-size:80px; font-weight:900; color:#fff;
+  line-height:1; letter-spacing:-4px;
+}
+#jcrms .step-period { display:none; }
+/* 오른쪽 설명 */
+#jcrms .step-info-col {
+  flex:1; background:#1e2f54;
+  padding:40px 48px 40px 56px;
+  display:flex; flex-direction:column; justify-content:center; gap:12px;
+}
+#jcrms .step-target-tag {
+  font-size:12px; font-weight:800; letter-spacing:3px;
+  color:#C8941A; text-transform:uppercase;
+}
+#jcrms .step-title {
+  font-family:'Pretendard',sans-serif;
+  font-size:36px; font-weight:900; color:#fff; margin:0; line-height:1.3;
+}
+#jcrms .step-target {
+  font-size:22px; color:rgba(255,255,255,.72); font-weight:500; line-height:1.7;
+  padding:16px 20px;
+  background:rgba(255,255,255,.07);
+  border-left:3px solid #C8941A;
+  border-radius:0 6px 6px 0;
+}
+#jcrms .step-target em {
+  font-style:normal; color:#FFD166; font-weight:700;
+}
+
+/* ════ 콘텐츠 그리드 ════ */
+#jcrms .step-body {
+  padding:36px 60px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+#jcrms .track {
+  padding:0 24px 0 0;
+  border-right:2px solid #E8E2D8;
+}
+#jcrms .track:last-child { padding:0 0 0 24px; border-right:none; }
+#jcrms .track-label {
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:20px; padding-bottom:12px;
+  border-bottom:2px solid;
+}
+#jcrms .track-label.u { border-color:#1A2744; }
+#jcrms .track-label.l { border-color:#7D2E3E; }
+#jcrms .track-dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+#jcrms .track-label.u .track-dot { background:#1A2744; }
+#jcrms .track-label.l .track-dot { background:#7D2E3E; }
+#jcrms .track-name {
+  font-size:22px; font-weight:900; letter-spacing:1px;
+}
+#jcrms .track-label.u .track-name { color:#1A2744; }
+#jcrms .track-label.l .track-name { color:#7D2E3E; }
+
+/* ── 과목 행 (선 + 점 스타일) ── */
+#jcrms .course-list { display:flex; flex-direction:column; gap:0; position:relative; }
+#jcrms .course-list::before {
+  content:'';
+  position:absolute; left:11px; top:12px; bottom:12px; width:2px;
+  background:#E8E2D8;
+}
+#jcrms .course-item {
+  display:flex; align-items:flex-start; gap:16px;
+  padding:14px 14px 14px 0;
+  border-bottom:1px solid #F0EAE0;
+  cursor:default;
+  transition:background .15s;
+  position:relative; z-index:1;
+  border-radius:6px;
+}
+#jcrms .course-item:last-child { border-bottom:none; }
+#jcrms .course-item:hover { background:#F5F1EB; }
+#jcrms .course-item.lnk { cursor:pointer; }
+
+#jcrms .course-dot {
+  width:24px; height:24px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  margin-top:2px; font-size:12px; font-weight:900;
+  border:2px solid;
+}
+#jcrms .track-u .course-dot.on  { background:#1A2744; border-color:#1A2744; color:#fff; }
+#jcrms .track-u .course-dot.off { background:#FAF8F4; border-color:#C4B9A8; color:#C4B9A8; animation:jcs-blink 2.4s ease-in-out infinite; }
+#jcrms .track-l .course-dot.on  { background:#7D2E3E; border-color:#7D2E3E; color:#fff; }
+#jcrms .track-l .course-dot.off { background:#FAF8F4; border-color:#C4B9A8; color:#C4B9A8; animation:jcs-blink 2.4s ease-in-out infinite; }
+#jcrms .course-dot.fin { background:#C8941A; border-color:#C8941A; color:#fff; }
+
+#jcrms .course-info { flex:1; }
+#jcrms .course-date {
+  font-size:13px; font-weight:800; letter-spacing:1px;
+  margin-bottom:3px;
+}
+#jcrms .track-u .course-date.on  { color:#1A2744; }
+#jcrms .track-u .course-date.off { color:#B0A898; }
+#jcrms .track-l .course-date.on  { color:#7D2E3E; }
+#jcrms .track-l .course-date.off { color:#B0A898; }
+#jcrms .course-name {
+  font-size:24px; font-weight:900; line-height:1.3; margin-bottom:4px;
+}
+#jcrms .track-u .course-name.on  { color:#1A2744; }
+#jcrms .track-u .course-name.off { color:#B8AFA4; }
+#jcrms .track-l .course-name.on  { color:#7D2E3E; }
+#jcrms .track-l .course-name.off { color:#B8AFA4; }
+#jcrms .course-name.fin { color:#C8941A; }
+#jcrms .course-sub {
+  font-size:18px; font-weight:500; line-height:1.6;
+}
+#jcrms .track-u .course-sub.on  { color:#4A5878; }
+#jcrms .track-u .course-sub.off { color:#C8BFB4; }
+#jcrms .track-l .course-sub.on  { color:#7D4A52; }
+#jcrms .track-l .course-sub.off { color:#C8BFB4; }
+#jcrms .course-sub.fin { color:#A87818; }
+
+#jcrms .course-status {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:6px 16px; border-radius:20px;
+  font-size:16px; font-weight:800; margin-top:8px;
+}
+#jcrms .track-u .course-status.on  { background:#EBF0FA; color:#1A2744; }
+#jcrms .track-u .course-status.off { background:#F5F2EE; color:#B0A898; border:1px dashed #D4C9B8; }
+#jcrms .track-l .course-status.on  { background:#F9EEF0; color:#7D2E3E; }
+#jcrms .track-l .course-status.off { background:#F5F2EE; color:#B0A898; border:1px dashed #D4C9B8; }
+#jcrms .course-status.fin { background:#FDF3DC; color:#C8941A; }
+
+/* ── STEP 구분선 ── */
+#jcrms .step-divider {
+  height:3px; margin:40px 60px 0;
+  background:linear-gradient(90deg,#1A2744,#7D2E3E,#C8941A,transparent);
+  opacity:.25; border-radius:3px;
+}
+
+/* ── 연결 화살표 ── */
+#jcrms .step-arrow {
+  display:flex; align-items:center; justify-content:center;
+  padding:20px 0;
+  color:#C8941A; font-size:28px;
+}
+
+/* 푸터 */
+#jcrms .foot {
+  background:#1A2744;
+  text-align:center; padding:32px 20px;
+  font-size:15px; color:rgba(255,255,255,.35); font-weight:600;
+}
+#jcrms .foot-note {
+  margin-top:8px;
+  font-size:13px; color:rgba(255,255,255,.25);
+}
+
+/* 카드 등장 */
+#jcrms .fu { opacity:0; animation:jcs-up .25s ease forwards; }
+
+/* ════ 한눈에 보기 섹션 ════ */
+#jcrms .overview {
+  background:#fff;
+  padding:72px 60px 80px;
+  border-bottom:2px solid #E8E2D8;
+}
+#jcrms .ov-header {
+  text-align:center; margin-bottom:52px;
+}
+#jcrms .ov-tag {
+  display:inline-block;
+  font-size:12px; font-weight:800; letter-spacing:4px;
+  color:#C8941A; text-transform:uppercase;
+  margin-bottom:14px;
+}
+#jcrms .ov-title {
+  font-size:44px; font-weight:900; color:#1A2744;
+  line-height:1.25; letter-spacing:-1px; margin:0 0 16px;
+}
+#jcrms .ov-sub {
+  font-size:20px; color:#888; font-weight:500;
+}
+
+/* 5개 카드 가로 배치 */
+#jcrms .ov-grid {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:0;
+  position:relative;
+}
+/* 카드 사이 연결 화살표 선 */
+#jcrms .ov-grid::before {
+  content:'';
+  position:absolute;
+  top:54px; left:10%; right:10%; height:3px;
+  background:linear-gradient(90deg,#1A2744,#7D2E3E,#C8941A);
+  opacity:.18; border-radius:2px; z-index:0;
+}
+
+#jcrms .ov-card {
+  display:flex; flex-direction:column; align-items:center;
+  text-align:center; padding:0 12px;
+  position:relative; z-index:1; cursor:pointer;
+  transition:transform .2s;
+}
+#jcrms .ov-card:hover { transform:translateY(-6px); }
+#jcrms .ov-card:hover .ov-num-circle { box-shadow:0 8px 28px rgba(26,39,68,.25); }
+
+#jcrms .ov-num-circle {
+  width:64px; height:64px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; font-weight:900; color:#fff;
+  margin-bottom:16px; flex-shrink:0;
+  box-shadow:0 4px 16px rgba(26,39,68,.18);
+  transition:box-shadow .2s;
+}
+#jcrms .ov-card:nth-child(1) .ov-num-circle { background:linear-gradient(135deg,#1A2744,#2d4570); }
+#jcrms .ov-card:nth-child(2) .ov-num-circle { background:linear-gradient(135deg,#234060,#3a6090); }
+#jcrms .ov-card:nth-child(3) .ov-num-circle { background:linear-gradient(135deg,#5a3060,#7D2E3E); }
+#jcrms .ov-card:nth-child(4) .ov-num-circle { background:linear-gradient(135deg,#7D2E3E,#a04858); }
+#jcrms .ov-card:nth-child(5) .ov-num-circle { background:linear-gradient(135deg,#C8941A,#e0aa30); }
+
+#jcrms .ov-step-lbl {
+  font-size:14px; font-weight:900; letter-spacing:2px;
+  color:#B0A898; text-transform:uppercase; margin-bottom:8px;
+}
+#jcrms .ov-card-title {
+  font-size:22px; font-weight:900; color:#1A2744;
+  margin-bottom:10px; line-height:1.3;
+}
+#jcrms .ov-period { display:none; }
+#jcrms .ov-target {
+  font-size:17px; color:#444; font-weight:600;
+  line-height:1.65; word-break:keep-all;
+}
+#jcrms .ov-tags {
+  display:flex; flex-wrap:wrap; gap:6px; justify-content:center;
+  margin-top:12px;
+}
+#jcrms .ov-tag-item {
+  font-size:15px; font-weight:700; padding:6px 13px;
+  border-radius:4px; white-space:nowrap;
+}
+#jcrms .ov-tag-u {
+  background:#EBF0FA; color:#1A2744;
+}
+#jcrms .ov-tag-l {
+  background:#F9EEF0; color:#7D2E3E;
+}
+
+/* 구분선 (overview → content) */
+#jcrms .ov-divider {
+  height:4px;
+  background:linear-gradient(90deg,#1A2744 0%,#7D2E3E 50%,#C8941A 100%);
+  opacity:.12;
+}
+
+/* 모바일 */
+@media(max-width:767px){
+  #jcrms .overview { padding:48px 16px 56px; }
+  #jcrms .ov-title { font-size:34px; }
+  #jcrms .ov-sub { font-size:18px; }
+  #jcrms .ov-grid {
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+  #jcrms .ov-grid::before { display:none; }
+  #jcrms .ov-card {
+    flex-direction:row; text-align:left; gap:18px; align-items:flex-start;
+  }
+  #jcrms .ov-num-circle { width:60px; height:60px; font-size:22px; flex-shrink:0; margin-bottom:0; }
+  #jcrms .ov-card-body { flex:1; display:flex; flex-direction:column; text-align:left; }
+  #jcrms .ov-card-title { font-size:24px; }
+  #jcrms .ov-target { font-size:18px; color:#444; font-weight:600; }
+  #jcrms .ov-step-lbl { font-size:15px; }
+  #jcrms .ov-tags { justify-content:flex-start; }
+  #jcrms .ov-tag-item { font-size:16px; padding:7px 14px; }
+}
+
+/* ════ 모바일 ════ */
+@media(max-width:767px){
+  #jcrms .hd { padding:110px 20px 100px; }
+  #jcrms .hd-title { font-size:46px; letter-spacing:-1px; }
+  #jcrms .hd-sub { font-size:22px; }
+  #jcrms .hd-desc { font-size:19px; }
+  #jcrms .hd-badge { font-size:18px; padding:12px 20px; }
+  #jcrms .step-nav { padding:0 12px; }
+  #jcrms .snav-btn { padding:14px 16px; }
+  #jcrms .snav-label { font-size:16px; }
+  #jcrms .snav-num { font-size:12px; }
+  #jcrms .step-hd { flex-direction:column; }
+  #jcrms .step-num-col { width:100%; flex-direction:row; padding:24px 20px; gap:16px; justify-content:flex-start; }
+  #jcrms .step-num-col::after { display:none; }
+  #jcrms .step-n { font-size:60px; }
+  #jcrms .step-info-col { padding:26px 20px; }
+  #jcrms .step-title { font-size:28px; }
+  #jcrms .step-target { font-size:20px; }
+  #jcrms .step-target-tag { font-size:14px; }
+  #jcrms .step-body { grid-template-columns:1fr; padding:24px 20px 0; gap:32px; }
+  #jcrms .track { padding:0; border-right:none; border-bottom:2px solid #E8E2D8; padding-bottom:32px; }
+  #jcrms .track:last-child { border-bottom:none; padding-bottom:0; }
+  #jcrms .track-name { font-size:22px; }
+  #jcrms .course-name { font-size:23px; }
+  #jcrms .course-sub { font-size:18px; }
+  #jcrms .course-status { font-size:16px; padding:7px 16px; }
+  #jcrms .step-divider { margin:32px 20px 0; }
+}
+</style>
+
+<div id="jcrms-outer">
+<div id="jcrms">
+
+<!-- 헤더 -->
+<div class="hd">
+  <div class="hd-inner">
+    <div class="hd-tag">Curriculum Roadmap</div>
+    <div class="hd-title">나에게 딱 맞는<br><span>단계별</span> 영어 로드맵</div>
+    <div class="hd-sub"></div>
+<br>
+    <div class="hd-desc">나의 현재 영어 실력에서 시작해, 자연스럽게 다음 단계로 이어지는<br>전공·평생 과정을 함께 확인하세요.</div>
+<br>
+    <div class="hd-badges">
+      <div class="hd-badge hd-badge-u">
+        <div class="hd-badge-dot" style="background:#fff;"></div>
+        📘 전공 과정
+      </div>
+      <div class="hd-badge hd-badge-l">
+        <div class="hd-badge-dot" style="background:#C8941A;"></div>
+        📖 평생 과정 (성경 영어)
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 탭 네비 -->
+<div class="step-nav" id="jcrms-nav">
+  <button class="snav-btn active" data-s="1" onclick="jcrmsGo(1)">
+    <span class="snav-num">STEP 01</span>
+    <span class="snav-label">기초 점화</span>
+  </button>
+  <div class="snav-divider"></div>
+  <button class="snav-btn" data-s="2" onclick="jcrmsGo(2)">
+    <span class="snav-num">STEP 02</span>
+    <span class="snav-label">엔진 구동</span>
+  </button>
+  <div class="snav-divider"></div>
+  <button class="snav-btn" data-s="3" onclick="jcrmsGo(3)">
+    <span class="snav-num">STEP 03</span>
+    <span class="snav-label">독해·문법</span>
+  </button>
+  <div class="snav-divider"></div>
+  <button class="snav-btn" data-s="4" onclick="jcrmsGo(4)">
+    <span class="snav-num">STEP 04</span>
+    <span class="snav-label">실전 영어</span>
+  </button>
+  <div class="snav-divider"></div>
+  <button class="snav-btn" data-s="5" onclick="jcrmsGo(5)">
+    <span class="snav-num">STEP 05</span>
+    <span class="snav-label">심화 확장</span>
+  </button>
+</div>
+
+<!-- 한눈에 보기 섹션 (JS 생성) -->
+<div id="jcrms-overview"></div>
+<div class="ov-divider"></div>
+
+<!-- 콘텐츠 (JS 생성) -->
+<div id="jcrms-content"></div>
+
+<div class="foot">
+  © 2026 정철대학 · Jeongchul University · All Rights Reserved
+  <div class="foot-note">* 공개 일정은 상황에 따라 변경될 수 있습니다. (1. 요셉 B세트 / 2. 사도행전 / 3. 성영암(리뉴얼) / 4. 요셉말하기는 추후 업로드)</div>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+
+/* ════ 데이터 ════ */
+var STEPS = [
+  {
+    id:1, label:"기초 점화", period:"2026년 4~5월",
+    title:"영어, 두려움 없이 시작하기",
+    target:"<em>알파벳은 알지만</em> 영어 한 마디도 못 하는 분,\n발음이 두렵고 숫자·날짜조차 영어로 막히는 분",
+    upper:[
+      {name:"영어엔진 1~3단계", sub:"영어 문장을 스스로 만드는 핵심 메커니즘", date:"4월 21일", on:1, url:"https://jc.co.kr/product/정철쌤의-영어엔진-1단계/"},
+      {name:"죽은영어살리기 1",  sub:"머릿속에 잠든 영어를 깨우는 첫 번째 처방", date:"5월 14일", on:0},
+      {name:"왕초보 파닉스",     sub:"소리와 글자의 규칙으로 읽기 자신감 세우기", date:"5월 28일", on:0},
+      {name:"왕초보 숫자 영어",  sub:"숫자·시간·날짜를 원어민처럼 읽는 법",      date:"5월 28일", on:0}
+    ],
+    lower:[
+      {name:"영어로 그림전도",   sub:"시각적 도구로 복음을 전하는 직관적 전도 영어", date:"4월 21일", on:1, url:"https://jc.co.kr/product/영어로-그림전도/"},
+      {name:"로마서 8장",        sub:"성령과 구원의 확신을 깊이 새기는 말씀 묵상",   date:"4월 21일", on:1, url:"https://jc.co.kr/product/정철의-로마서-통독암송/"},
+      {name:"산상수훈 1권",      sub:"예수님의 고귀한 가르침을 원문으로 묵상",       date:"5월 18일", on:0},
+      {name:"야고보서 1권",      sub:"행함이 있는 믿음을 영어 말씀으로 체득",        date:"5월 18일", on:0}
+    ]
+  },
+  {
+    id:2, label:"엔진 구동", period:"2026년 6~8월",
+    title:"문장이 만들어지기 시작하다",
+    target:"단어는 알지만 <em>문장으로 연결이 안 되는 분</em>,\n문법책은 봤는데 말로 나오지 않는 분",
+    upper:[
+      {name:"영어엔진 4단계",    sub:"동사 하나로 문장 전체를 완성하는 훈련",       date:"6월",    on:0},
+      {name:"왕초보 패턴회화",   sub:"가장 많이 쓰는 패턴으로 즉각 반응하기",       date:"6월",    on:0},
+      {name:"영어엔진 5단계",    sub:"패턴으로 말하기 능력을 완성하는 단계",         date:"7월",    on:0},
+      {name:"죽은영어살리기 2",  sub:"더 깊이 묻혀있는 영어 감각을 끌어올리기",     date:"7월",    on:0},
+      {name:"영어엔진 6단계",    sub:"6단계 완성으로 영어 엔진 풀가동",              date:"8월",    on:0},
+      {name:"죽은영어살리기 3",  sub:"완전한 표현력 회복으로 시리즈 완결",           date:"8월",    on:0, fin:1}
+    ],
+    lower:[
+      {name:"야고보서 2권",      sub:"행함이 있는 믿음을 영어 말씀으로 체득",        date:"6월",    on:0},
+      {name:"요한복음 1권",      sub:"정철대학이 제안하는 성경 영어의 정석",         date:"7월",    on:0},
+      {name:"산상수훈 2권",      sub:"산상수훈 완결",                                date:"7월",    on:0, fin:1},
+      {name:"요한복음 2권",      sub:"정철대학이 제안하는 성경 영어의 정석",         date:"8월",    on:0},
+      {name:"야고보서 3권",      sub:"야고보서 완결",                                date:"8월",    on:0, fin:1}
+    ]
+  },
+  {
+    id:3, label:"독해·문법", period:"2026년 9~12월",
+    title:"읽고 이해하는 속도가 달라진다",
+    target:"영어를 읽긴 하는데 <em>해석이 느리고 구조가 흔들리는 분</em>,\n문법은 배웠어도 실전에서 헷갈리는 분",
+    upper:[
+      {name:"리바이벌 잉글리쉬 1", sub:"잊혔던 영어 감각을 깨우는 체계적 복원",    date:"9월 말",  on:0},
+      {name:"죽은문법살리기",       sub:"헷갈리는 문법을 완전히 정리하는 처방전",   date:"9월",     on:0},
+      {name:"리바이벌 잉글리쉬 2", sub:"잊혔던 영어 감각을 깨우는 체계적 복원",    date:"10월",    on:0},
+      {name:"직독직해",             sub:"끊어 읽기로 문장 구조를 꿰뚫는 훈련",      date:"10월",    on:0},
+      {name:"리바이벌 잉글리쉬 3", sub:"잊혔던 영어 감각을 깨우는 체계적 복원",    date:"11월",    on:0},
+      {name:"속독속해",             sub:"빠르게 읽고 빠르게 이해하는 독해 훈련",    date:"11월",    on:0},
+      {name:"리바이벌 잉글리쉬 4", sub:"잊혔던 영어 감각을 깨우는 체계적 복원",    date:"12월",    on:0}
+    ],
+    lower:[
+      {name:"요한복음 3권",  sub:"정철대학이 제안하는 성경 영어의 정석",             date:"9월",     on:0},
+      {name:"요한복음 4권",  sub:"정철대학이 제안하는 성경 영어의 정석",             date:"10월",    on:0},
+      {name:"요한복음 5권",  sub:"정철대학이 제안하는 성경 영어의 정석",             date:"11월",    on:0},
+      {name:"요한복음 6권",  sub:"A세트 완결",                                       date:"12월",    on:0, fin:1}
+    ]
+  },
+  {
+    id:4, label:"실전 영어", period:"2027년 1~6월",
+    title:"배운 영어를 실제로 쓰기 시작하다",
+    target:"공부는 했지만 <em>실제 대화·비즈니스에서 막히는 분</em>,\n외국인 앞에서 입이 굳는 분",
+    upper:[
+      {name:"리바이벌 잉글리쉬 5",  sub:"잊혔던 영어 감각을 깨우는 체계적 복원",   date:"1월",    on:0},
+      {name:"리바이벌 잉글리쉬 6",  sub:"리바이벌 시리즈 완결",                     date:"2월",    on:0, fin:1},
+      {name:"뉴욕 잉글리쉬",         sub:"뉴욕 현지의 생생한 트렌디 영어",           date:"3월",    on:0},
+      {name:"스토리북 1",            sub:"재미있는 이야기로 익히는 자연스러운 문장", date:"3월",    on:0},
+      {name:"리얼비즈니스토크 1,2",  sub:"비즈니스 현장에서 통하는 프로의 언어",    date:"4월",    on:0}
+    ],
+    lower:[
+      {name:"요나서",             sub:"순종의 여정으로 배우는 생생한 묘사 영어 — 완결", date:"1~2월",  on:0, fin:1},
+      {name:"요셉이야기 1~2권",   sub:"꿈과 비전을 담은 요셉의 일대기 영어 정복",       date:"3월",    on:0},
+      {name:"요셉이야기 3~4권",   sub:"꿈과 비전을 담은 요셉의 일대기 영어 정복",       date:"4월",    on:0},
+      {name:"요셉이야기 5권",     sub:"요셉이야기 완결",                                 date:"6월",    on:0, fin:1},
+      {name:"요한일서 1권",       sub:"사랑과 진리의 메시지를 담은 깊이 있는 묵상",      date:"6월",    on:0}
+    ]
+  },
+  {
+    id:5, label:"심화 확장", period:"2027년 7~12월",
+    title:"더 깊고, 더 넓고, 더 자유롭게",
+    target:"<em>어느 정도 영어가 되는데</em> 더 자연스럽고 깊이 있는 표현을 원하는 분,\n성경 영어로 신앙과 영어를 함께 완성하고 싶은 분",
+    upper:[
+      {name:"Hit verb 동치미", sub:"핵심 동사 하나로 수십 가지 표현 정복", date:"10월", on:0}
+    ],
+    lower:[
+      {name:"요한복음 7권",  sub:"정철대학이 제안하는 성경 영어의 정석",  date:"7월",   on:0},
+      {name:"요한일서 2권",  sub:"사랑과 진리의 메시지를 담은 깊이 있는 묵상", date:"7월", on:0},
+      {name:"요한복음 8권",  sub:"정철대학이 제안하는 성경 영어의 정석",  date:"8월",   on:0},
+      {name:"요한일서 3권",  sub:"요한일서 완결",                           date:"8월",   on:0, fin:1},
+      {name:"요한복음 9권",  sub:"정철대학이 제안하는 성경 영어의 정석",  date:"9월",   on:0},
+      {name:"요한복음 10권", sub:"정철대학이 제안하는 성경 영어의 정석",  date:"10월",  on:0},
+      {name:"요한복음 11권", sub:"정철대학이 제안하는 성경 영어의 정석",  date:"11월",  on:0},
+      {name:"요한복음 12권", sub:"요영통 완결 🎉🎉",                       date:"12월",  on:0, fin:1}
+    ]
+  }
+];
+
+/* ════ 렌더 ════ */
+var delay=0;
+function nd(){var d=delay;delay+=0.03;return d;}
+
+function courseHTML(c, track){
+  var fin=c.fin||0, on=c.on||0;
+  var state=fin?"fin":(on?"on":"off");
+  var cls="course-item"+(c.url?" lnk":"");
+  var oc=c.url?" onclick=\"window.open('"+c.url+"','_blank')\"":"";
+  var dotIcon=fin?"🎉":(on?"✓":"");
+  var badge=fin?"🎉 시리즈 완결":(on?"✅ 공개 완료":"📅 공개 예정 · "+c.date);
+  var d=nd();
+  return "<div class='"+cls+" fu' "+oc+" style='animation-delay:"+d.toFixed(2)+"s;animation-play-state:paused;'>"
+    +"<div class='course-dot "+state+"'>"+dotIcon+"</div>"
+    +"<div class='course-info'>"
+      +"<div class='course-name "+state+(fin?" fin":"")+"'>"+c.name+"</div>"
+      +"<div class='course-sub "+state+(fin?" fin":"")+"'>"+c.sub+"</div>"
+      +"<div class='course-status "+state+"'>"+badge+"</div>"
+    +"</div>"
+    +"</div>";
+}
+
+function stepHTML(s, idx){
+  delay=0.1;
+  var html="<div class='step-section' id='step-"+s.id+"' data-step='"+s.id+"'>";
+
+  /* STEP 헤더 */
+  html+="<div class='step-hd fu' style='animation-delay:0.05s;animation-play-state:paused;'>"
+    +"<div class='step-num-col'>"
+      +"<span class='step-step'>STEP</span>"
+      +"<span class='step-n'>0"+s.id+"</span>"
+      +"<span class='step-period'>"+s.period+"</span>"
+    +"</div>"
+    +"<div class='step-info-col'>"
+      +"<div class='step-target-tag'>이런 분께 추천합니다</div>"
+      +"<div class='step-title'>"+s.title+"</div>"
+      +"<div class='step-target'>"+s.target.replace(/\n/g,"<br>")+"</div>"
+    +"</div>"
+  +"</div>";
+
+  /* 트랙 */
+  html+="<div class='step-body'>";
+
+  /* 전공 */
+  html+="<div class='track track-u'>"
+    +"<div class='track-label u'><div class='track-dot'></div><span class='track-name'>📘 전공 과정</span></div>"
+    +"<div class='course-list'>";
+  s.upper.forEach(function(c){ html+=courseHTML(c,"u"); });
+  html+="</div></div>";
+
+  /* 평생 */
+  html+="<div class='track track-l'>"
+    +"<div class='track-label l'><div class='track-dot'></div><span class='track-name'>📖 평생 과정</span></div>"
+    +"<div class='course-list'>";
+  s.lower.forEach(function(c){ html+=courseHTML(c,"l"); });
+  html+="</div></div>";
+
+  html+="</div>"; /* step-body */
+
+  if(idx < STEPS.length-1){
+    html+="<div class='step-divider'></div>"
+      +"<div class='step-arrow'>↓</div>";
+  }
+
+  html+="</div>"; /* step-section */
+  return html;
+}
+
+/* ── 한눈에 보기 렌더 ── */
+function renderOverview(){
+  var ov=document.getElementById("jcrms-overview"); if(!ov)return;
+  var ovData=[
+    {id:1, label:"기초 점화", period:"2026년 4~5월",
+     title:"영어,<br>두려움 없이 시작",
+     target:"알파벳은 알지만\n영어 한 마디도 못 하는 분",
+     utags:["영어엔진 1~3단계","파닉스","숫자영어"],
+     ltags:["그림전도","로마서 8장","산상수훈 1권"]},
+    {id:2, label:"엔진 구동", period:"2026년 6~8월",
+     title:"문장이<br>만들어지기 시작",
+     target:"단어는 알지만\n문장으로 연결이 안 되는 분",
+     utags:["영어엔진 4~6단계","패턴회화","죽은영어 2~3"],
+     ltags:["야고보서","요한복음 1~2권"]},
+    {id:3, label:"독해·문법", period:"2026년 9~12월",
+     title:"읽고 이해하는<br>속도가 달라진다",
+     target:"읽긴 하는데\n해석이 느리고 구조가 흔들리는 분",
+     utags:["리바이벌 1~4","직독직해","속독속해","문법살리기"],
+     ltags:["요한복음 3~6권 (A세트 완결)"]},
+    {id:4, label:"실전 영어", period:"2027년 1~6월",
+     title:"배운 영어를\n실제로 쓰기 시작",
+     target:"공부는 했지만\n실제 대화·비즈니스에서 막히는 분",
+     utags:["리바이벌 5~6","뉴욕 잉글리쉬","비즈니스토크"],
+     ltags:["요나서","요셉이야기 1~5권","요한일서 1권"]},
+    {id:5, label:"심화 확장", period:"2027년 7~12월",
+     title:"더 깊고,\n더 자유롭게",
+     target:"영어가 어느 정도 되는데\n더 깊이 성장하고 싶은 분",
+     utags:["Hit verb 동치미"],
+     ltags:["요한복음 7~12권 (요영통 완결)","요한일서 2~3권"]}
+  ];
+
+  var html="<div class='overview'>"
+    +"<div class='ov-header fu' style='animation-delay:0.05s;animation-play-state:paused;'>"
+      +"<div class='ov-tag'>📋 전체 커리큘럼 한눈에 보기</div>"
+      +"<div class='ov-title'>나는 어느 단계부터 시작할까?</div>"
+      +"<div class='ov-sub'>5단계 커리큘럼을 한번에 확인하고 나에게 맞는 단계를 선택하세요</div>"
+    +"</div>"
+    +"<div class='ov-grid'>";
+
+  ovData.forEach(function(s,i){
+    var d=(i*0.08+0.1).toFixed(2);
+    html+="<div class='ov-card fu' onclick='jcrmsGo("+s.id+")' style='animation-delay:"+d+"s;animation-play-state:paused;cursor:pointer;'>"
+      +"<div class='ov-num-circle'>0"+s.id+"</div>"
+      +"<div class='ov-card-body'>"
+        +"<div class='ov-step-lbl'>STEP 0"+s.id+" · "+s.label+"</div>"
+        +"<div class='ov-card-title'>"+s.title.replace(/\n/g,"<br>")+"</div>"
+        +"<div class='ov-period'>"+s.period+"</div>"
+        +"<div class='ov-target'>"+s.target.replace(/\n/g,"<br>")+"</div>"
+        +"<div class='ov-tags'>";
+    s.utags.forEach(function(t){ html+="<span class='ov-tag-item ov-tag-u'>"+t+"</span>"; });
+    s.ltags.forEach(function(t){ html+="<span class='ov-tag-item ov-tag-l'>"+t+"</span>"; });
+    html+="</div>"  /* ov-tags */
+      +"</div>"     /* ov-card-body */
+      +"</div>";    /* ov-card */
+  });
+
+  html+="</div></div>"; /* ov-grid, overview */
+  ov.innerHTML=html;
+}
+
+function render(){
+  var out=document.getElementById("jcrms-content"); if(!out)return;
+  renderOverview();
+  var html="";
+  STEPS.forEach(function(s,i){ html+=stepHTML(s,i); });
+  out.innerHTML=html;
+
+  /* IntersectionObserver — overview + content 모두 */
+  if("IntersectionObserver" in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){e.target.style.animationPlayState="running";obs.unobserve(e.target);}
+      });
+    },{threshold:0.02,rootMargin:"0px 0px -10px 0px"});
+    document.querySelectorAll("#jcrms .fu").forEach(function(el){obs.observe(el);});
+  }
+}
+
+/* STEP 탭 이동 */
+window.jcrmsGo=function(n){
+  var el=document.getElementById("step-"+n); if(!el)return;
+  var nav=document.getElementById("jcrms-nav");
+  var off=(nav?nav.offsetHeight:60)+8;
+  window.scrollTo({top:el.getBoundingClientRect().top+window.pageYOffset-off,behavior:"smooth"});
+  document.querySelectorAll("#jcrms-nav .snav-btn").forEach(function(b){
+    b.classList.toggle("active", b.getAttribute("data-s")==String(n));
+  });
+};
+
+/* 스크롤 active 탭 */
+(function(){
+  var tick=false;
+  window.addEventListener("scroll",function(){
+    if(tick)return;tick=true;
+    requestAnimationFrame(function(){
+      var nav=document.getElementById("jcrms-nav");
+      var navH=nav?nav.offsetHeight:60;
+      var cur=null;
+      document.querySelectorAll("[data-step]").forEach(function(s){
+        if(s.getBoundingClientRect().top<=navH+80)cur=s.getAttribute("data-step");
+      });
+      if(cur){
+        document.querySelectorAll("#jcrms-nav .snav-btn").forEach(function(b){
+          b.classList.toggle("active",b.getAttribute("data-s")===cur);
+        });
+      }
+      tick=false;
+    });
+  });
+})();
+
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",render);}
+else{render();}
+})();
+</script>
